@@ -1,0 +1,159 @@
+#!/usr/bin/env/python
+import sys
+from PyQt5 import QtGui, QtWidgets, QtCore
+
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.backends.backend_qt5agg import NavigationToolbar2QT as NavigationToolbar
+import matplotlib.pyplot as plt
+
+import random
+import numpy as np
+import sys
+
+from kerrpy import universe, Camera
+import logging
+
+
+class QPlainTextEditLogger(logging.Handler):
+    def __init__(self, parent=None):
+        super().__init__()
+
+        self.widget = QtWidgets.QListWidget(parent)
+        # self.widget.setAutoScroll(True)
+
+    def emit(self, record):
+        msg = self.format(record)
+        self.widget.addItem(msg)
+        self.widget.scrollToBottom()
+
+    def write(self, m):
+        pass
+
+
+class LoggingWindow(QtWidgets.QDialog, QPlainTextEditLogger):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+
+        self.setGeometry(0, 0, 700, 300)
+
+        logTextBox = QPlainTextEditLogger(self)
+        # You can format what is printed to text box
+        logTextBox.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+        logging.getLogger().addHandler(logTextBox)
+        self.cosa = logTextBox  # test
+
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(logTextBox.widget)
+        self.setLayout(layout)
+
+
+def create_linked_slide(identifier, min_val, max_val, n_val):
+
+    slider = QtWidgets.QSlider(QtCore.Qt.Horizontal)
+    slider.setValue(getattr(*identifier) / (max_val - min_val) * n_val - min_val)
+    slider.setRange(0, n_val)
+
+    def update_slider():
+        new_value = (max_val - min_val) * slider.value() / n_val + min_val
+        logging.debug('Setting parameter {} to {}'.format(identifier[1], new_value))
+        setattr(*(*identifier, new_value))
+
+    slider.valueChanged.connect(update_slider)
+
+    return slider
+
+
+class Window(QtWidgets.QDialog):
+    def __init_camera__(self):
+
+        # Camera position
+        camR = 40
+        camTheta = 1.511
+        camPhi = 0
+
+        # Camera lens properties
+        camFocalLength = 20
+        camSensorShape = (500, 500)  # (Rows, Columns)
+        camSensorSize = (16, 16)  # (Height, Width)
+
+        # Set black hole spin
+        universe.spin = .5
+        # Create a camera
+        universe.accretionDisk.innerRadius = 0
+        self.camera = Camera(camR, camTheta, camPhi, camFocalLength, camSensorShape, camSensorSize)
+        self.camera.yaw = -0.06
+
+    def __init__(self, parent=None):
+        super(Window, self).__init__(parent)
+
+        self.__init_camera__()
+
+        # a figure instance to plot on
+        self.figure = plt.figure()
+
+        # this is the Canvas Widget that displays the `figure`
+        # it takes the `figure` instance as a parameter to __init__
+        self.canvas = FigureCanvas(self.figure)
+
+        # this is the Navigation widget
+        # it takes the Canvas widget and a parent
+        self.toolbar = NavigationToolbar(self.canvas, self)
+
+        # Just some button connected to `plot` method
+        self.button = QtWidgets.QPushButton('Plot')
+        self.button.clicked.connect(self.plot)
+
+        self.cam_r = create_linked_slide((self.camera, 'r'), 10, 40, 20)
+        self.universe_spin = create_linked_slide((universe, 'spin'), 0.001, 0.99, 30)
+        self.cam_theta = create_linked_slide((self.camera, 'theta'), 0.00001, np.pi - 0.00001, 20)
+        self.cam_yaw = create_linked_slide((self.camera, 'yaw'), -np.pi / 2, np.pi / 2, 20)
+        self.cam_pitch = create_linked_slide((self.camera, 'pitch'), -np.pi / 2, np.pi / 2, 20)
+        self.cam_roll = create_linked_slide((self.camera, 'roll'), 0, 2 * np.pi, 20)
+
+        # Add one textbox
+        # set the layout
+        layout = QtWidgets.QVBoxLayout()
+        layout.addWidget(self.toolbar)
+        layout.addWidget(self.canvas)
+        layout.addWidget(self.button)
+
+        layout.addWidget(QtWidgets.QLabel("spin"))
+        layout.addWidget(self.universe_spin)
+
+        layout.addWidget(QtWidgets.QLabel("r"))
+        layout.addWidget(self.cam_r)
+        layout.addWidget(QtWidgets.QLabel("theta"))
+        layout.addWidget(self.cam_theta)
+        layout.addWidget(QtWidgets.QLabel("yaw"))
+        layout.addWidget(self.cam_yaw)
+        layout.addWidget(QtWidgets.QLabel("pitch"))
+        layout.addWidget(self.cam_pitch)
+        layout.addWidget(QtWidgets.QLabel("roll"))
+        layout.addWidget(self.cam_roll)
+
+        self.setLayout(layout)
+
+    def plot(self):
+        ''' plot some random stuff '''
+        photo, _ = self.camera.shoot(dashed_texture=True)
+        cosa = photo.texels
+        ax = self.figure.add_subplot(111)
+
+        # plot data
+        ax.imshow(cosa)
+        # refresh canvas
+        self.canvas.draw()
+
+
+if __name__ == '__main__':
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    logging.getLogger().handlers.pop()
+
+    app = QtWidgets.QApplication(sys.argv)
+    main = Window()
+    main.show()
+
+    logger = LoggingWindow()
+    logger.show()
+    sys.exit(app.exec_())
