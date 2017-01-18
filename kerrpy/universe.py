@@ -1,4 +1,4 @@
-from Utils.attr_dict import AttrDict
+from .utils.attr_dict import AttrDict
 
 from numpy import cos, arccos, sqrt
 
