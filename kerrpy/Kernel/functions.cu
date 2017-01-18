@@ -1,7 +1,7 @@
 #ifndef __FUNCTIONS__
 #define __FUNCTIONS__
 
-#include "Raytracer/Kernel/common.cu"
+#include "kerrpy/Kernel/common.cu"
 
 /**
 * Computes the value of the function F(t) = (dr/dt, dtheta/dt, dphi/dt, dpr/dt,

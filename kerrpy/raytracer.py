@@ -1,5 +1,5 @@
 from .universe import universe
-from .Utils.logging_utils import LoggingClass
+from .utils.logging_utils import LoggingClass
 
 import os
 import numpy as np
@@ -104,6 +104,7 @@ class RayTracer(metaclass=LoggingClass):
             rayTracer.synchronise()
             rayTracer.plotImage()
     """
+
     def __init__(self, camera, debug=False):
         self.debug = debug
         self.systemSize = 5
@@ -132,7 +133,7 @@ class RayTracer(metaclass=LoggingClass):
 
         self.gridDim = (self.gridDimCols, self.gridDimRows, 1)
 
-        print(self.blockDim, self.gridDim)
+        # print(self.blockDim, self.gridDim)
 
         # Render the kernel
         self._kernelRendering()
@@ -168,7 +169,7 @@ class RayTracer(metaclass=LoggingClass):
         templateVars = {
             "IMG_ROWS": self.imageRows,
             "IMG_COLS": self.imageCols,
-            "NUM_PIXELS": self.imageRows*self.imageCols,
+            "NUM_PIXELS": self.imageRows * self.imageCols,
 
             # Camera constants
             "D": self.camera.focalLength,
@@ -201,19 +202,14 @@ class RayTracer(metaclass=LoggingClass):
             # RK45 solver constants
             "R_TOL_I": 1e-6,
             "A_TOL_I": 1e-12,
-
             "SAFE": 0.9,
-            "SAFE_INV": 1/0.9,
-
+            "SAFE_INV": 1 / 0.9,
             "FAC_1": 0.2,
             "FAC_1_INV": 1 / 0.2,
-
             "FAC_2": 10.0,
             "FAC_2_INV": 1 / 10.0,
-
             "BETA": 0.04,
             "UROUND": 2.3e-16,
-
             "MIN_RESOL": -0.1,
             "MAX_RESOL": -2.0,
 
@@ -251,8 +247,7 @@ class RayTracer(metaclass=LoggingClass):
         # Compile the kernel code using pycuda.compiler
         kernelFile = os.path.join(selfDir, "Kernel", "raytracer.cu")
 
-        mod = compiler.SourceModule(open(kernelFile, "r").read(),
-                                    include_dirs=[selfDir, softwareDir])
+        mod = compiler.SourceModule(open(kernelFile, "r").read(), include_dirs=[selfDir, softwareDir])
 
         # Get the initial kernel function from the compiled module
         self._setInitialConditions = mod.get_function("setInitialConditions")
@@ -262,14 +257,14 @@ class RayTracer(metaclass=LoggingClass):
 
         # Get the image generation function from the compiled module
         self.generateImage = mod.get_function("generate_image")
+        self.generate_textured_image = mod.get_function("generate_textured_image")
 
         # # Get the collision detection function from the compiled module
         # self._detectCollisions = mod.get_function("detectCollisions")
 
     def _setUpInitCond(self):
         # Array to compute the ray's initial conditions
-        self.systemState = np.empty((self.imageRows, self.imageCols,
-                                     self.systemSize))
+        self.systemState = np.empty((self.imageRows, self.imageCols, self.systemSize))
 
         # Array to compute the ray's constants
         self.constants = np.empty((self.imageRows, self.imageCols, 2))
@@ -278,8 +273,7 @@ class RayTracer(metaclass=LoggingClass):
         #   0: A ray that has not yet collide with anything.
         #   1: A ray that has collided with the horizon.
         #   2: A ray that has collided with the black hole.
-        self.rayStatus = np.zeros((self.imageRows, self.imageCols),
-                                  dtype=np.int32)
+        self.rayStatus = np.zeros((self.imageRows, self.imageCols), dtype=np.int32)
 
         # Send them to the GPU
         self.systemStateGPU = gpuarray.to_gpu(self.systemState)
@@ -290,7 +284,6 @@ class RayTracer(metaclass=LoggingClass):
         self._setInitialConditions(
             self.systemStateGPU,
             self.constantsGPU,
-
             np.float64(self.camera.pixelWidth),
             np.float64(self.camera.pixelHeight),
 
@@ -300,8 +293,7 @@ class RayTracer(metaclass=LoggingClass):
 
             # Block definition -> number of threads x number of threads
             # Each thread in the block computes one RK4 step for one equation
-            block=self.blockDim
-        )
+            block=self.blockDim)
 
         # TODO: Remove this copy, inefficient!
         # Retrieve the computed initial conditions
@@ -325,8 +317,7 @@ class RayTracer(metaclass=LoggingClass):
             # Block definition -> number of threads x number of threads
             # Each thread in the block computes one RK4 step for one
             # equation
-            block=self.blockDim
-        )
+            block=self.blockDim)
 
     def rayTrace(self, xEnd, kernelCalls=1):
         """
@@ -350,7 +341,7 @@ class RayTracer(metaclass=LoggingClass):
 
         # Send the rays to the outer space!
         for _ in range(kernelCalls):
-            print(x, x+interval)
+            # print(x, x + interval)
             # Start timing
             self.start.record()
 
@@ -365,7 +356,7 @@ class RayTracer(metaclass=LoggingClass):
             self.end.synchronize()
 
             # Calculate the run length
-            self.totalTime += self.start.time_till(self.end)*1e-3
+            self.totalTime += self.start.time_till(self.end) * 1e-3
 
         self.synchronise()
         return self.rayStatus, self.systemState
@@ -374,13 +365,11 @@ class RayTracer(metaclass=LoggingClass):
         stepSize = xEnd / numSteps
 
         # Initialize plotData with the initial position of the rays
-        self.plotData = np.zeros((self.imageRows, self.imageCols,
-                                  3, numSteps+1))
+        self.plotData = np.zeros((self.imageRows, self.imageCols, 3, numSteps + 1))
         self.plotData[:, :, :, 0] = self.systemState[:, :, :3]
 
         # Initialize plotStatus with a matriz full of zeros
-        self.plotStatus = np.empty((self.imageRows, self.imageCols,
-                                   numSteps+1), dtype=np.int32)
+        self.plotStatus = np.empty((self.imageRows, self.imageCols, numSteps + 1), dtype=np.int32)
         self.plotStatus[:, :, 0] = 0
 
         x = 0
@@ -410,22 +399,18 @@ class RayTracer(metaclass=LoggingClass):
         diskGPU = gpuarray.to_gpu(disk)
         sphereGPU = gpuarray.to_gpu(sphere)
 
-        self.image = np.empty((self.imageRows, self.imageCols, 3),
-                              dtype=np.float64)
+        self.image = np.empty((self.imageRows, self.imageCols, 3), dtype=np.float64)
         imageGPU = gpuarray.to_gpu(self.image)
 
         self.generateImage(
             self.systemStateGPU,
             self.rayStatusGPU,
-
             diskGPU,
             np.int32(disk.shape[0]),
             np.int32(disk.shape[1]),
-
             sphereGPU,
             np.int32(sphere.shape[0]),
             np.int32(sphere.shape[1]),
-
             imageGPU,
 
             # Grid definition -> number of blocks x number of blocks.
@@ -434,8 +419,29 @@ class RayTracer(metaclass=LoggingClass):
 
             # Block definition -> number of threads x number of threads
             # Each thread in the block computes one RK4 step for one equation
-            block=self.blockDim
-        )
+            block=self.blockDim)
+
+        self.image = imageGPU.get()
+
+        return self.image
+
+    def dashed_textured_image(self):
+
+        self.image = np.empty((self.imageRows, self.imageCols, 3), dtype=np.float64)
+        imageGPU = gpuarray.to_gpu(self.image)
+
+        self.generate_textured_image(
+            self.systemStateGPU,
+            self.rayStatusGPU,
+            imageGPU,
+
+            # Grid definition -> number of blocks x number of blocks.
+            # Each block computes the direction of one pixel
+            grid=self.gridDim,
+
+            # Block definition -> number of threads x number of threads
+            # Each thread in the block computes one RK4 step for one equation
+            block=self.blockDim)
 
         self.image = imageGPU.get()
 

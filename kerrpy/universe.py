@@ -1,4 +1,4 @@
-from Utils.attr_dict import AttrDict
+from .utils.attr_dict import AttrDict
 
 from numpy import cos, arccos, sqrt
 
@@ -6,9 +6,8 @@ from numpy import cos, arccos, sqrt
 class Universe:
     def __init__(self, spin=0.999, innerDiskRadius=9, outerDiskRadius=20):
         self._spin = spin
-        self.spinSquared = spin*spin
-        self.accretionDisk = AttrDict(innerRadius=innerDiskRadius,
-                                      outerRadius=outerDiskRadius)
+        self.spinSquared = spin * spin
+        self.accretionDisk = AttrDict(innerRadius=innerDiskRadius, outerRadius=outerDiskRadius)
 
         self.cameras = set()
 
@@ -30,8 +29,8 @@ class Universe:
 
     def computeTrappedOrbits(self):
         # Interval over the radius of trapped photons' orbits run. See (A.6)
-        r1 = 2.*(1. + cos((2./3.)*arccos(-self.spin)))
-        r2 = 2.*(1. + cos((2./3.)*arccos(+self.spin)))
+        r1 = 2. * (1. + cos((2. / 3.) * arccos(-self.spin)))
+        r2 = 2. * (1. + cos((2. / 3.) * arccos(+self.spin)))
 
         return r1, r2
 
@@ -39,7 +38,7 @@ class Universe:
         a = self.spin
         a2 = self.spinSquared
 
-        return - (r**3. - 3.*(r**2.) + a2*r + a2) / (a*(r-1.))
+        return -(r**3. - 3. * (r**2.) + a2 * r + a2) / (a * (r - 1.))
 
     def computeBConstants(self):
         # Necessary constants for the origin algorithm. See (A.13)
@@ -59,7 +58,7 @@ class Universe:
     def spin(self, value):
         # Set new spin value and its square
         self._spin = value
-        self.spinSquared = value*value
+        self.spinSquared = value * value
 
         # Update Universe properties
         self.update()

@@ -33,8 +33,8 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "Raytracer/Kernel/common.cu"
-#include "Raytracer/Kernel/functions.cu"
+#include "kerrpy/Kernel/common.cu"
+#include "kerrpy/Kernel/functions.cu"
 
 /**
  * This method uses DOPRI5 to advance a time of \p h the system stored in \p

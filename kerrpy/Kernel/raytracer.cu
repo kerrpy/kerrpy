@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <math.h>
 #include <assert.h>
-#include "Raytracer/Kernel/common.cu"
-#include "Raytracer/Kernel/solvers.cu"
-#include "Raytracer/Kernel/image_transformation.cu"
+#include "kerrpy/Kernel/common.cu"
+#include "kerrpy/Kernel/solvers.cu"
+#include "kerrpy/Kernel/image_transformation.cu"
 
 #define Pi M_PI
 #define SYSTEM_SIZE 5

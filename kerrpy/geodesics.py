@@ -1,4 +1,4 @@
-from .Utils.draw import drawScene, drawGeodesic
+from .utils.draw import drawScene, drawGeodesic
 from math import gcd
 
 import numpy as np
@@ -80,30 +80,26 @@ class CongruenceSnapshot:
         self.congruenceMatrixCols = self.status.shape[1]
 
         self.dpi = gcd(self.status.shape[0], self.status.shape[1])
-        self.imageSize = (self.status.shape[0]/self.dpi,
-                          self.status.shape[1]/self.dpi)
+        self.imageSize = (self.status.shape[0] / self.dpi, self.status.shape[1] / self.dpi)
 
         self.numPixels = self.congruenceMatrixRows * self.congruenceMatrixCols
 
         self.colors = [
             [1, 1, 1],  # Sphere
             [1, 0, 0],  # Disk
-            [0, 0, 0]   # Horizon
+            [0, 0, 0]  # Horizon
         ]
 
     def plot(self):
         fig = plt.figure(frameon=False)
-        fig.set_size_inches(self.congruenceMatrixCols,
-                            self.congruenceMatrixRows)
+        fig.set_size_inches(self.congruenceMatrixCols, self.congruenceMatrixRows)
 
         ax = plt.Axes(fig, [0., 0., 1., 1.])
         ax.set_axis_off()
         fig.add_axes(ax)
 
         if self.texels is None:
-            image = np.empty((self.congruenceMatrixRows,
-                              self.congruenceMatrixCols,
-                              3))
+            image = np.empty((self.congruenceMatrixRows, self.congruenceMatrixCols, 3))
 
             for row in range(self.congruenceMatrixRows):
                 for col in range(self.congruenceMatrixCols):
@@ -126,9 +122,7 @@ class CongruenceSnapshot:
         fig.add_axes(ax)
 
         if self.texels is None:
-            image = np.empty((self.congruenceMatrixRows,
-                              self.congruenceMatrixCols,
-                              3))
+            image = np.empty((self.congruenceMatrixRows, self.congruenceMatrixCols, 3))
 
             for row in range(self.congruenceMatrixRows):
                 for col in range(self.congruenceMatrixCols):
@@ -157,16 +151,14 @@ class Congruence:
         self.colors = [
             [1, 1, 1],  # Sphere
             [1, 0, 0],  # Disk
-            [0, 0, 0]   # Horizon
+            [0, 0, 0]  # Horizon
         ]
 
     def snapshot(self, instant):
-        return CongruenceSnapshot(self.status[:, :, instant],
-                                  self.coordinates[:, :, :, instant])
+        return CongruenceSnapshot(self.status[:, :, instant], self.coordinates[:, :, :, instant])
 
     def geodesic(self, row, col):
-        return Geodesic(self.status[row, col, :],
-                        np.transpose(self.coordinates[row, col, :, :]))
+        return Geodesic(self.status[row, col, :], np.transpose(self.coordinates[row, col, :, :]))
 
     def plot(self):
         # Start figure
