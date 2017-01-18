@@ -73,8 +73,8 @@
 
 // Camera constants
 #define __d 20
-#define __camR 40
-#define __camTheta 1.511
+#define __camR 14.5
+#define __camTheta 0.4712458980384689
 #define __camPhi 0
 #define __camBeta 0
 
@@ -83,11 +83,11 @@
 #define __b2 4.09626665871
 
 // Kerr constants
-#define __ro 40.0000111604
-#define __delta 1600.25
-#define __pomega 39.9316285846
+#define __ro 14.5068422388
+#define __delta 210.5
+#define __pomega 6.58686528546
 #define __alpha 1.0
-#define __omega 1.56225502574e-05
+#define __omega 0.000327318178562
 
 // Camera rotation angles
 #define __pitch 0.0

@@ -1,4 +1,4 @@
-from .utils.attr_dict import AttrDict
+from Utils.attr_dict import AttrDict
 
 from numpy import cos, arccos, sqrt
 
@@ -25,7 +25,7 @@ class Universe:
 
         # Propagate the changes to all cameras
         for camera in self.cameras:
-            camera.update()
+            camera._update()
 
     def computeTrappedOrbits(self):
         # Interval over the radius of trapped photons' orbits run. See (A.6)

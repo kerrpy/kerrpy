@@ -4,4 +4,3 @@ numpy
 pycuda
 setuptools
 sphinx_bootstrap_theme
-PyQt5
