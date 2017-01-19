@@ -27,10 +27,10 @@ Testing
 
 .. .. currentmodule:: kerrpy 
 
-.. autoclass:: kerrpy.camera.Camera
+.. :noindex: autoclass:: kerrpy.camera.Camera
     :members:
 
-.. autoclass:: kerrpy.raytracer.RayTracer
+.. :noindex: autoclass:: kerrpy.raytracer.RayTracer
     :members:
 
 
