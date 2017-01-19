@@ -18,17 +18,17 @@ then
     rm -rf *
 
     # Retrieve everything important from the master branch
-    git checkout master Documentation Software .gitignore
+    git checkout master docs kerrpy .gitignore
 
     # Move to the Sphinx directory and build the documentation
-    if cd Documentation/Sphinx && make html ;
+    if cd docs/Sphinx && make html ;
     then
         # Move the Sphinx output back to the root
         cd $GIT_ROOT
-        mv -f Documentation/Sphinx/build/html/* ./
+        mv -f docs/Sphinx/build/html/* ./
 
         # Keep only the sphinx output
-        rm -rf Documentation/ Software/
+        rm -rf docs/ Software/
 
         # Add everything, commit and push to Github
         git add -A && git commit -am "Pushing to gh-pages: $GIT_LAST_COMMIT" && git push origin gh-pages
