@@ -21,7 +21,7 @@ import sphinx_bootstrap_theme
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../kerrpy'))
+# sys.path.insert(0, os.path.abspath('../../kerrpy'))
 
 # -- General configuration ------------------------------------------------
 
@@ -155,7 +155,7 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+# html_static_path = ['_static']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -351,3 +351,6 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 breathe_projects = {"kerrpy": "../build/doxygen/xml/", }
 
 breathe_default_project = "kerrpy"
+
+# Sphinx goes nuts with cuda macros, so we need to add them (see http://www.sphinx-doc.org/en/1.5.1/config.html#confval-cpp_id_attributes)
+cpp_id_attributes = ['__device__', '__global__']

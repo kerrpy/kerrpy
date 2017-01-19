@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to kerrpy's documentation!
-===============================
+==================================
 
 Contents:
 
@@ -26,19 +26,17 @@ Testing
 
 .. .. currentmodule:: raytracer
 
-.. autoclass:: kerr.KerrMetric
+.. autoclass:: kerrpy.camera.Camera
     :members:
 
-.. autoclass:: raytracer.Camera
+.. autoclass:: kerrpy.raytracer.RayTracer
     :members:
 
-.. autoclass:: raytracer.RayTracer
-    :members:
 
 This is a test to know whether the figure automatic numbering really works. See :numref:`my-figure-ref` if everything's fine.
 
 .. _my-figure-ref:
-.. figure:: ../../../Res/sphinxTest.png
+.. figure:: ../images/sphinxTest.png
    :scale: 50 %
    :alt: map to buried treasure
 
@@ -52,10 +50,13 @@ Doxygen testing
 ===============
 
 .. doxygenfile:: solvers.cu
+.. doxygenfile:: raytracer.cu
+.. doxygenfile:: image_transformation.cu
+.. doxygenfile:: functions.cu
 
-.. doxygenfunction:: advanceStep
+doxygenfunction:: advanceStep
 
 Bibliography
 ============
 
-.. bibliography:: ../../Report/Bibliography.bib
+.. bibliography:: ../Bibliography.bib
