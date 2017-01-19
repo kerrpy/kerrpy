@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>kerrpy package &#8212; kerrpy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="kerrpy.utils package" href="kerrpy.utils.html" />
+    <link rel="prev" title="Welcome to kerrpy’s documentation!" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          kerrpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">kerrpy package</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">kerrpy package</a><ul>
+<li><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-kerrpy.camera">kerrpy.camera module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.geodesics">kerrpy.geodesics module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.raytracer">kerrpy.raytracer module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.universe">kerrpy.universe module</a></li>
+<li><a class="reference internal" href="#module-kerrpy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="index.html" title="Previous Chapter: Welcome to kerrpy’s documentation!"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Welcome to ke...</span>
+    </a>
+  </li>
+  <li>
+    <a href="kerrpy.utils.html" title="Next Chapter: kerrpy.utils package"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm hidden-tablet">kerrpy.utils package &raquo;</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/kerrpy.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="kerrpy-package">
+<h1>kerrpy package<a class="headerlink" href="#kerrpy-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="kerrpy.utils.html">kerrpy.utils package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="kerrpy.utils.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerrpy.utils.html#module-kerrpy.utils.attr_dict">kerrpy.utils.attr_dict module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerrpy.utils.html#module-kerrpy.utils.draw">kerrpy.utils.draw module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerrpy.utils.html#module-kerrpy.utils.logging_utils">kerrpy.utils.logging_utils module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerrpy.utils.html#module-kerrpy.utils.progress_lib">kerrpy.utils.progress_lib module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="kerrpy.utils.html#module-kerrpy.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-kerrpy.camera">
+<span id="kerrpy-camera-module"></span><h2>kerrpy.camera module<a class="headerlink" href="#module-kerrpy.camera" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kerrpy.camera.Camera">
+<em class="property">class </em><code class="descclassname">kerrpy.camera.</code><code class="descname">Camera</code><span class="sig-paren">(</span><em>r</em>, <em>theta</em>, <em>phi</em>, <em>focalLength</em>, <em>sensorShape</em>, <em>sensorSize</em>, <em>roll=0</em>, <em>pitch=0</em>, <em>yaw=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Pinhole camera placed near a Kerr black hole.</p>
+<p>This class contains the necessary data to define a camera that is located
+on the coordinate system of a Kerr black hole.</p>
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.r">
+<code class="descname">r</code><a class="headerlink" href="#kerrpy.camera.Camera.r" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Distance to the coordinate origin; i.e., distance to the
+black hole centre.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.r2">
+<code class="descname">r2</code><a class="headerlink" href="#kerrpy.camera.Camera.r2" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Square of <cite>r</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.theta">
+<code class="descname">theta</code><a class="headerlink" href="#kerrpy.camera.Camera.theta" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Inclination of the camera with respect to the black
+hole.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.phi">
+<code class="descname">phi</code><a class="headerlink" href="#kerrpy.camera.Camera.phi" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Azimuth of the camera with respect to the black hole.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.focalLength">
+<code class="descname">focalLength</code><a class="headerlink" href="#kerrpy.camera.Camera.focalLength" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Distance between the focal point (where every ray
+that reaches the camera has to pass through) and the focal plane
+(where the actual sensor/film is placed).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.sensorSize">
+<code class="descname">sensorSize</code><a class="headerlink" href="#kerrpy.camera.Camera.sensorSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> &#8211; 2-tuple that defines the physical dimensions of the
+sensor in the following way: <cite>(Height, Width)</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.sensorShape">
+<code class="descname">sensorShape</code><a class="headerlink" href="#kerrpy.camera.Camera.sensorShape" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> &#8211; 2-tuple that defines the number of pixels of the
+sensor in the following way: <cite>(Number of rows, Number of columns)</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.pixelWidth">
+<code class="descname">pixelWidth</code><a class="headerlink" href="#kerrpy.camera.Camera.pixelWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Width of one single pixel in physical units. It is
+computed as <cite>Number of columns / Sensor width</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.pixelHeight">
+<code class="descname">pixelHeight</code><a class="headerlink" href="#kerrpy.camera.Camera.pixelHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Height of one single pixel in physical units. It
+is computed as <cite>Number of rows / Sensor height</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.speed">
+<code class="descname">speed</code><a class="headerlink" href="#kerrpy.camera.Camera.speed" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Speed of the camera, that follows a circular orbit
+around the black hole in the equatorial plane. It is computed using
+the formula (A.7) of Thorne&#8217;s paper.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.roll">
+<code class="descname">roll</code><a class="headerlink" href="#kerrpy.camera.Camera.roll" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; The roll angle of the CCD; i.e., the rotation angle
+of the CCD on its plane. Defaults to zero, that means the CCD is
+facing the black hole centre.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.pitch">
+<code class="descname">pitch</code><a class="headerlink" href="#kerrpy.camera.Camera.pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; The pitch angle of the CCD; i.e., the above/below
+direction of looking. Defaults to zero, that means the CCD is
+facing the black hole centre.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.yaw">
+<code class="descname">yaw</code><a class="headerlink" href="#kerrpy.camera.Camera.yaw" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; The yaw angle of the CCD; i.e., the left/right
+direction of lookin. Defaults to zero, that means the CCD is
+facing the black hole centre.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.camera.Camera.__del__">
+<code class="descname">__del__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera.__del__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera.__del__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__weakref__': &lt;attribute '__weakref__' of 'Camera' objects&gt;, '_compute_metric_value': &lt;function Camera._compute_metric_value&gt;, 'theta': &lt;property object&gt;, 'phi': &lt;property object&gt;, '__del__': &lt;function Camera.__del__&gt;, '_update': &lt;function Camera._update&gt;, 'sensorSize': &lt;property object&gt;, '__init__': &lt;function Camera.__init__&gt;, '__dict__': &lt;attribute '__dict__' of 'Camera' objects&gt;, 'r': &lt;property object&gt;, 'sensorShape': &lt;property object&gt;, '_compute_pixel_size': &lt;function Camera._compute_pixel_size&gt;, '__doc__': &quot;Pinhole camera placed near a Kerr black hole.\n\n    This class contains the necessary data to define a camera that is located\n    on the coordinate system of a Kerr black hole.\n\n    Attributes:\n        r (double): Distance to the coordinate origin; i.e., distance to the\n            black hole centre.\n        r2 (double): Square of `r`.\n        theta (double): Inclination of the camera with respect to the black\n            hole.\n        phi (double): Azimuth of the camera with respect to the black hole.\n        focalLength (double): Distance between the focal point (where every ray\n            that reaches the camera has to pass through) and the focal plane\n            (where the actual sensor/film is placed).\n        sensorSize (tuple): 2-tuple that defines the physical dimensions of the\n            sensor in the following way: `(Height, Width)`.\n        sensorShape (tuple): 2-tuple that defines the number of pixels of the\n            sensor in the following way: `(Number of rows, Number of columns)`.\n        pixelWidth (double): Width of one single pixel in physical units. It is\n            computed as `Number of columns / Sensor width`.\n        pixelHeight (double): Height of one single pixel in physical units. It\n            is computed as `Number of rows / Sensor height`.\n        speed (double): Speed of the camera, that follows a circular orbit\n            around the black hole in the equatorial plane. It is computed using\n            the formula (A.7) of Thorne's paper.\n        roll (double): The roll angle of the CCD; i.e., the rotation angle\n            of the CCD on its plane. Defaults to zero, that means the CCD is\n            facing the black hole centre.\n        pitch (double): The pitch angle of the CCD; i.e., the above/below\n            direction of looking. Defaults to zero, that means the CCD is\n            facing the black hole centre.\n        yaw (double): The yaw angle of the CCD; i.e., the left/right\n            direction of lookin. Defaults to zero, that means the CCD is\n            facing the black hole centre.\n    &quot;, '_compute_speed': &lt;function Camera._compute_speed&gt;, 'slicedShoot': &lt;function Camera.slicedShoot&gt;, 'shoot': &lt;function Camera.shoot&gt;, '__module__': 'kerrpy.camera'})</em><a class="headerlink" href="#kerrpy.camera.Camera.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.camera.Camera.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>r</em>, <em>theta</em>, <em>phi</em>, <em>focalLength</em>, <em>sensorShape</em>, <em>sensorSize</em>, <em>roll=0</em>, <em>pitch=0</em>, <em>yaw=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the camera defined by <cite>focalLength</cite>, <cite>sensorShape</cite> and
+<cite>sensorSize</cite> and locates it at the passed coordinates <span class="math">\((r_c,
+\theta_c, \phi_c)\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>r</strong> (<em>double</em>) &#8211; Distance to the coordinate origin; i.e., distance to
+the black hole centre.</li>
+<li><strong>theta</strong> (<em>double</em>) &#8211; Inclination of the camera with respect to the black
+hole.</li>
+<li><strong>phi</strong> (<em>double</em>) &#8211; Azimuth of the camera with respect to the black hole.</li>
+<li><strong>focalLength</strong> (<em>double</em>) &#8211; Distance between the focal point (where every
+row that reaces the camera has to pass through) and the focal
+plane (where the actual sensor/film is placed).</li>
+<li><strong>sensorShape</strong> (<em>tuple</em>) &#8211; 2-tuple that defines the number of pixels of
+the sensor in the following way: <cite>(Number of rows, Number of
+columns)</cite>.</li>
+<li><strong>sensorSize</strong> (<em>tuple</em>) &#8211; 2-tuple that defines the physical dimensions of
+the sensor in the following way: <cite>(Height, Width)</cite>.</li>
+<li><strong>roll</strong> (<em>double</em>) &#8211; The roll angle of the CCD; i.e., the rotation angle
+of the CCD on the plane of the CCD. Defaults to zero, that
+means the CCD is facing the black hole centre.</li>
+<li><strong>pitch</strong> (<em>double</em>) &#8211; The pitch angle of the CCD; i.e., the above/below
+direction of looking. Defaults to zero, that means the CCD is
+facing the black hole centre.</li>
+<li><strong>yaw</strong> (<em>double</em>) &#8211; The yaw angle of the CCD; i.e., the left/right
+direction of lookin. Defaults to zero, that means the CCD is
+facing the black hole centre.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.camera'</em><a class="headerlink" href="#kerrpy.camera.Camera.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.camera.Camera.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">phi</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">r</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">sensorShape</code></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">sensorSize</code></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.camera.Camera.shoot">
+<code class="descname">shoot</code><span class="sig-paren">(</span><em>finalTime=-150</em>, <em>diskPath=None</em>, <em>spherePath=None</em>, <em>dashed_texture=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera.shoot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera.shoot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.camera.Camera.slicedShoot">
+<code class="descname">slicedShoot</code><span class="sig-paren">(</span><em>finalTime=-150</em>, <em>slicesNum=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera.slicedShoot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera.slicedShoot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">theta</code></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.geodesics">
+<span id="kerrpy-geodesics-module"></span><h2>kerrpy.geodesics module<a class="headerlink" href="#module-kerrpy.geodesics" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kerrpy.geodesics.Congruence">
+<em class="property">class </em><code class="descclassname">kerrpy.geodesics.</code><code class="descname">Congruence</code><span class="sig-paren">(</span><em>status</em>, <em>coordinates</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Congruence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Congruence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="kerrpy.geodesics.Congruence.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__weakref__': &lt;attribute '__weakref__' of 'Congruence' objects&gt;, 'geodesic': &lt;function Congruence.geodesic&gt;, '__doc__': None, '__dict__': &lt;attribute '__dict__' of 'Congruence' objects&gt;, 'snapshot': &lt;function Congruence.snapshot&gt;, '__init__': &lt;function Congruence.__init__&gt;, '__module__': 'kerrpy.geodesics', 'plot': &lt;function Congruence.plot&gt;})</em><a class="headerlink" href="#kerrpy.geodesics.Congruence.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.Congruence.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>status</em>, <em>coordinates</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Congruence.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Congruence.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.geodesics.Congruence.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.geodesics'</em><a class="headerlink" href="#kerrpy.geodesics.Congruence.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.geodesics.Congruence.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.geodesics.Congruence.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.Congruence.geodesic">
+<code class="descname">geodesic</code><span class="sig-paren">(</span><em>row</em>, <em>col</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Congruence.geodesic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Congruence.geodesic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.Congruence.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Congruence.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Congruence.plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.Congruence.snapshot">
+<code class="descname">snapshot</code><span class="sig-paren">(</span><em>instant</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Congruence.snapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Congruence.snapshot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kerrpy.geodesics.CongruenceSnapshot">
+<em class="property">class </em><code class="descclassname">kerrpy.geodesics.</code><code class="descname">CongruenceSnapshot</code><span class="sig-paren">(</span><em>status</em>, <em>coordinates</em>, <em>texels=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#CongruenceSnapshot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="kerrpy.geodesics.CongruenceSnapshot.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__init__': &lt;function CongruenceSnapshot.__init__&gt;, '__doc__': None, '__dict__': &lt;attribute '__dict__' of 'CongruenceSnapshot' objects&gt;, 'save': &lt;function CongruenceSnapshot.save&gt;, '__weakref__': &lt;attribute '__weakref__' of 'CongruenceSnapshot' objects&gt;, '__module__': 'kerrpy.geodesics', 'plot': &lt;function CongruenceSnapshot.plot&gt;})</em><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.CongruenceSnapshot.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>status</em>, <em>coordinates</em>, <em>texels=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#CongruenceSnapshot.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.geodesics.CongruenceSnapshot.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.geodesics'</em><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.geodesics.CongruenceSnapshot.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.CongruenceSnapshot.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#CongruenceSnapshot.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot.plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.CongruenceSnapshot.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#CongruenceSnapshot.save"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.CongruenceSnapshot.save" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kerrpy.geodesics.Geodesic">
+<em class="property">class </em><code class="descclassname">kerrpy.geodesics.</code><code class="descname">Geodesic</code><span class="sig-paren">(</span><em>status</em>, <em>coordinates</em>, <em>colour='royalBlue'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Geodesic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Geodesic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="kerrpy.geodesics.Geodesic.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__weakref__': &lt;attribute '__weakref__' of 'Geodesic' objects&gt;, '__doc__': None, '__dict__': &lt;attribute '__dict__' of 'Geodesic' objects&gt;, '__init__': &lt;function Geodesic.__init__&gt;, '__module__': 'kerrpy.geodesics', 'plot': &lt;function Geodesic.plot&gt;})</em><a class="headerlink" href="#kerrpy.geodesics.Geodesic.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.Geodesic.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>status</em>, <em>coordinates</em>, <em>colour='royalBlue'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Geodesic.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Geodesic.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.geodesics.Geodesic.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.geodesics'</em><a class="headerlink" href="#kerrpy.geodesics.Geodesic.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.geodesics.Geodesic.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.geodesics.Geodesic.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.geodesics.Geodesic.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>ax=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/geodesics.html#Geodesic.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.geodesics.Geodesic.plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.raytracer">
+<span id="kerrpy-raytracer-module"></span><h2>kerrpy.raytracer module<a class="headerlink" href="#module-kerrpy.raytracer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kerrpy.raytracer.RayTracer">
+<em class="property">class </em><code class="descclassname">kerrpy.raytracer.</code><code class="descname">RayTracer</code><span class="sig-paren">(</span><em>camera</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Relativistic spacetime ray tracer.</p>
+<p>This class generates images of what an observer would see near a rotating
+black hole.</p>
+<p>This is an abstraction layer over the CUDA kernel that integrates the ODE
+system specified in equations (A.15) of Thorne&#8217;s paper. It integrates,
+backwards in time, a set of rays near a Kerr black hole, computing its
+trajectories from the focal point of a camera located near the black hole.</p>
+<p>The RayTracer class hides all the black magic behind the CUDA code, giving
+a nice and simple interface to the user that just wants some really cool,
+and scientifically accurate, images.</p>
+<p>Given a scene composed by a camera, a Kerr metric and a black hole, the
+RayTracer just expects a time <span class="math">\(x_{end}\)</span> to solve the system.</p>
+<p class="rubric">Example</p>
+<p>Define the characteristics of the black hole and build it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">spin</span> <span class="o">=</span> <span class="mf">0.9999999999</span>
+<span class="n">innerDiskRadius</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">outerDiskRadius</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">blackHole</span> <span class="o">=</span> <span class="n">BlackHole</span><span class="p">(</span><span class="n">spin</span><span class="p">,</span> <span class="n">innerDiskRadius</span><span class="p">,</span> <span class="n">outerDiskRadius</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define the specifications of the camera and build it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">camR</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">camTheta</span> <span class="o">=</span> <span class="mf">1.511</span>
+<span class="n">camPhi</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">camFocalLength</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">camSensorShape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># (Rows, Columns)</span>
+<span class="n">camSensorSize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>         <span class="c1"># (Height, Width)</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">camR</span><span class="p">,</span> <span class="n">camTheta</span><span class="p">,</span> <span class="n">camPhi</span><span class="p">,</span>
+                <span class="n">camFocalLength</span><span class="p">,</span> <span class="n">camSensorShape</span><span class="p">,</span> <span class="n">camSensorSize</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a Kerr metric with the previous two objects:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">kerr</span> <span class="o">=</span> <span class="n">KerrMetric</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">blackHole</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set the speed of the camera once the Kerr metric and the black hole are
+created: it needs some info from both of these objects:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">camera</span><span class="o">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">kerr</span><span class="p">,</span> <span class="n">blackHole</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, build the raytracer with the camera, the metric and the black
+hole...:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rayTracer</span> <span class="o">=</span> <span class="n">RayTracer</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">kerr</span><span class="p">,</span> <span class="n">blackHole</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>...and generate the image!:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rayTracer</span><span class="o">.</span><span class="n">rayTrace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">rayTracer</span><span class="o">.</span><span class="n">synchronise</span><span class="p">()</span>
+<span class="n">rayTracer</span><span class="o">.</span><span class="n">plotImage</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="kerrpy.raytracer.RayTracer.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__weakref__': &lt;attribute '__weakref__' of 'RayTracer' objects&gt;, '_setUpInitCond': &lt;function RayTracer._setUpInitCond&gt;, 'synchronise': &lt;function RayTracer.synchronise&gt;, 'rayTrace': &lt;function RayTracer.rayTrace&gt;, '_kernelRendering': &lt;function RayTracer._kernelRendering&gt;, 'callKernel': &lt;function RayTracer.callKernel&gt;, 'slicedRayTrace': &lt;function RayTracer.slicedRayTrace&gt;, '__init__': &lt;function RayTracer.__init__&gt;, '__dict__': &lt;attribute '__dict__' of 'RayTracer' objects&gt;, 'dashed_textured_image': &lt;function RayTracer.dashed_textured_image&gt;, 'texturedImage': &lt;function RayTracer.texturedImage&gt;, '__doc__': &quot;Relativistic spacetime ray tracer.\n\n    This class generates images of what an observer would see near a rotating\n    black hole.\n\n    This is an abstraction layer over the CUDA kernel that integrates the ODE\n    system specified in equations (A.15) of Thorne's paper. It integrates,\n    backwards in time, a set of rays near a Kerr black hole, computing its\n    trajectories from the focal point of a camera located near the black hole.\n\n    The RayTracer class hides all the black magic behind the CUDA code, giving\n    a nice and simple interface to the user that just wants some really cool,\n    and scientifically accurate, images.\n\n    Given a scene composed by a camera, a Kerr metric and a black hole, the\n    RayTracer just expects a time :math:`x_{end}` to solve the system.\n\n    Example:\n        Define the characteristics of the black hole and build it::\n\n            spin = 0.9999999999\n            innerDiskRadius = 9\n            outerDiskRadius = 20\n            blackHole = BlackHole(spin, innerDiskRadius, outerDiskRadius)\n\n        Define the specifications of the camera and build it::\n\n            camR = 30\n            camTheta = 1.511\n            camPhi = 0\n            camFocalLength = 3\n            camSensorShape = (1000, 1000)  # (Rows, Columns)\n            camSensorSize = (2, 2)         # (Height, Width)\n            camera = Camera(camR, camTheta, camPhi,\n                            camFocalLength, camSensorShape, camSensorSize)\n\n        Create a Kerr metric with the previous two objects::\n\n            kerr = KerrMetric(camera, blackHole)\n\n        Set the speed of the camera once the Kerr metric and the black hole are\n        created: it needs some info from both of these objects::\n\n            camera.setSpeed(kerr, blackHole)\n\n        Finally, build the raytracer with the camera, the metric and the black\n        hole...::\n\n            rayTracer = RayTracer(camera, kerr, blackHole)\n\n        ...and generate the image!::\n\n            rayTracer.rayTrace(-90)\n            rayTracer.synchronise()\n            rayTracer.plotImage()\n    &quot;, '__module__': 'kerrpy.raytracer'})</em><a class="headerlink" href="#kerrpy.raytracer.RayTracer.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>camera</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.raytracer.RayTracer.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.raytracer'</em><a class="headerlink" href="#kerrpy.raytracer.RayTracer.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.raytracer.RayTracer.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.raytracer.RayTracer.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.callKernel">
+<code class="descname">callKernel</code><span class="sig-paren">(</span><em>x</em>, <em>xEnd</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.callKernel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.callKernel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.dashed_textured_image">
+<code class="descname">dashed_textured_image</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.dashed_textured_image"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.dashed_textured_image" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.rayTrace">
+<code class="descname">rayTrace</code><span class="sig-paren">(</span><em>xEnd</em>, <em>kernelCalls=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.rayTrace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.rayTrace" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xEnd</strong> (<em>float</em>) &#8211; Time in which the system will be integrated. After
+this method finishes, the value of the rays at t=xEnd will be
+known</li>
+<li><strong>stepsPerKernel</strong> (<em>integer</em>) &#8211; The number of steps each kernel call will
+compute; i.e., the host will call the kernel
+xEnd / (resolution*stepsPerKernel) times.</li>
+<li><strong>resolution</strong> (<em>float</em>) &#8211; The size of the interval that will be used to
+compute one solver step between successive calls to the
+collision detection method.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.slicedRayTrace">
+<code class="descname">slicedRayTrace</code><span class="sig-paren">(</span><em>xEnd</em>, <em>numSteps=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.slicedRayTrace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.slicedRayTrace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.synchronise">
+<code class="descname">synchronise</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.synchronise"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.synchronise" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.texturedImage">
+<code class="descname">texturedImage</code><span class="sig-paren">(</span><em>disk</em>, <em>sphere</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.texturedImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.texturedImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image should be a 2D array where each entry is a 3-tuple of Reals
+between 0.0 and 1.0</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.raytracer.spher2cart">
+<code class="descclassname">kerrpy.raytracer.</code><code class="descname">spher2cart</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#spher2cart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.spher2cart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.universe">
+<span id="kerrpy-universe-module"></span><h2>kerrpy.universe module<a class="headerlink" href="#module-kerrpy.universe" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kerrpy.universe.Universe">
+<em class="property">class </em><code class="descclassname">kerrpy.universe.</code><code class="descname">Universe</code><span class="sig-paren">(</span><em>spin=0.999</em>, <em>innerDiskRadius=9</em>, <em>outerDiskRadius=20</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/universe.html#Universe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.universe.Universe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="attribute">
+<dt id="kerrpy.universe.Universe.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__init__': &lt;function Universe.__init__&gt;, 'computeBConstants': &lt;function Universe.computeBConstants&gt;, 'spin': &lt;property object&gt;, '__dict__': &lt;attribute '__dict__' of 'Universe' objects&gt;, 'update': &lt;function Universe.update&gt;, '__weakref__': &lt;attribute '__weakref__' of 'Universe' objects&gt;, 'computeTrappedOrbits': &lt;function Universe.computeTrappedOrbits&gt;, '__doc__': None, 'computeHorizonRadius': &lt;function Universe.computeHorizonRadius&gt;, '_b0': &lt;function Universe._b0&gt;, '__module__': 'kerrpy.universe'})</em><a class="headerlink" href="#kerrpy.universe.Universe.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.universe.Universe.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>spin=0.999</em>, <em>innerDiskRadius=9</em>, <em>outerDiskRadius=20</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/universe.html#Universe.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.universe.Universe.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.universe.Universe.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.universe'</em><a class="headerlink" href="#kerrpy.universe.Universe.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.universe.Universe.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.universe.Universe.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.universe.Universe.computeBConstants">
+<code class="descname">computeBConstants</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/universe.html#Universe.computeBConstants"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.universe.Universe.computeBConstants" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.universe.Universe.computeHorizonRadius">
+<code class="descname">computeHorizonRadius</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/universe.html#Universe.computeHorizonRadius"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.universe.Universe.computeHorizonRadius" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.universe.Universe.computeTrappedOrbits">
+<code class="descname">computeTrappedOrbits</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/universe.html#Universe.computeTrappedOrbits"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.universe.Universe.computeTrappedOrbits" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.universe.Universe.spin">
+<code class="descname">spin</code><a class="headerlink" href="#kerrpy.universe.Universe.spin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.universe.Universe.update">
+<code class="descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/universe.html#Universe.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.universe.Universe.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-kerrpy" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Pablo Galindo and Alejandro García.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

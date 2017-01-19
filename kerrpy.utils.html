@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>kerrpy.utils package &#8212; kerrpy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="kerrpy package" href="kerrpy.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html">
+          kerrpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="kerrpy.html">kerrpy package</a></li>
+</ul>
+</ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"><ul>
+<li><a class="reference internal" href="#">kerrpy.utils package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-kerrpy.utils.attr_dict">kerrpy.utils.attr_dict module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.utils.draw">kerrpy.utils.draw module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.utils.logging_utils">kerrpy.utils.logging_utils module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.utils.progress_lib">kerrpy.utils.progress_lib module</a></li>
+<li><a class="reference internal" href="#module-kerrpy.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+              
+                
+  <li>
+    <a href="kerrpy.html" title="Previous Chapter: kerrpy package"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; kerrpy package</span>
+    </a>
+  </li>
+              
+            
+            
+            
+            
+              <li class="hidden-sm">
+<div id="sourcelink">
+  <a href="_sources/kerrpy.utils.rst.txt"
+     rel="nofollow">Source</a>
+</div></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <div class="section" id="kerrpy-utils-package">
+<h1>kerrpy.utils package<a class="headerlink" href="#kerrpy-utils-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-kerrpy.utils.attr_dict">
+<span id="kerrpy-utils-attr-dict-module"></span><h2>kerrpy.utils.attr_dict module<a class="headerlink" href="#module-kerrpy.utils.attr_dict" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kerrpy.utils.attr_dict.AttrDict">
+<em class="property">class </em><code class="descclassname">kerrpy.utils.attr_dict.</code><code class="descname">AttrDict</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/attr_dict.html#AttrDict"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.attr_dict.AttrDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<dl class="attribute">
+<dt id="kerrpy.utils.attr_dict.AttrDict.__dict__">
+<code class="descname">__dict__</code><em class="property"> = mappingproxy({'__weakref__': &lt;attribute '__weakref__' of 'AttrDict' objects&gt;, '__doc__': None, '__init__': &lt;function AttrDict.__init__&gt;, '__module__': 'kerrpy.utils.attr_dict', '__dict__': &lt;attribute '__dict__' of 'AttrDict' objects&gt;})</em><a class="headerlink" href="#kerrpy.utils.attr_dict.AttrDict.__dict__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.utils.attr_dict.AttrDict.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/attr_dict.html#AttrDict.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.attr_dict.AttrDict.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.utils.attr_dict.AttrDict.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.utils.attr_dict'</em><a class="headerlink" href="#kerrpy.utils.attr_dict.AttrDict.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.utils.attr_dict.AttrDict.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.utils.attr_dict.AttrDict.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.utils.draw">
+<span id="kerrpy-utils-draw-module"></span><h2>kerrpy.utils.draw module<a class="headerlink" href="#module-kerrpy.utils.draw" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="kerrpy.utils.draw.drawAxes">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">drawAxes</code><span class="sig-paren">(</span><em>ax</em>, <em>d=150</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#drawAxes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.drawAxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.draw.drawBlackHole">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">drawBlackHole</code><span class="sig-paren">(</span><em>ax</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#drawBlackHole"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.drawBlackHole" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.draw.drawCameras">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">drawCameras</code><span class="sig-paren">(</span><em>ax</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#drawCameras"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.drawCameras" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.draw.drawErgoSphere">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">drawErgoSphere</code><span class="sig-paren">(</span><em>ax</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#drawErgoSphere"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.drawErgoSphere" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.draw.drawGeodesic">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">drawGeodesic</code><span class="sig-paren">(</span><em>ax</em>, <em>coordinates</em>, <em>colour</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#drawGeodesic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.drawGeodesic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.draw.drawScene">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">drawScene</code><span class="sig-paren">(</span><em>ax</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#drawScene"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.drawScene" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.draw.spher2cart">
+<code class="descclassname">kerrpy.utils.draw.</code><code class="descname">spher2cart</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/draw.html#spher2cart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.draw.spher2cart" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.utils.logging_utils">
+<span id="kerrpy-utils-logging-utils-module"></span><h2>kerrpy.utils.logging_utils module<a class="headerlink" href="#module-kerrpy.utils.logging_utils" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="kerrpy.utils.logging_utils.LoggingClass">
+<em class="property">class </em><code class="descclassname">kerrpy.utils.logging_utils.</code><code class="descname">LoggingClass</code><a class="reference internal" href="_modules/kerrpy/utils/logging_utils.html#LoggingClass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.logging_utils.LoggingClass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">type</span></code></p>
+<p>This metaclass uses powerfull arcane forces to make every method of the class
+that inherits from this to log the execution and termination of itself.</p>
+<dl class="attribute">
+<dt id="kerrpy.utils.logging_utils.LoggingClass.__module__">
+<code class="descname">__module__</code><em class="property"> = 'kerrpy.utils.logging_utils'</em><a class="headerlink" href="#kerrpy.utils.logging_utils.LoggingClass.__module__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="staticmethod">
+<dt id="kerrpy.utils.logging_utils.LoggingClass.__new__">
+<em class="property">static </em><code class="descname">__new__</code><span class="sig-paren">(</span><em>meta</em>, <em>name</em>, <em>bases</em>, <em>attrs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/logging_utils.html#LoggingClass.__new__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.logging_utils.LoggingClass.__new__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.utils.progress_lib">
+<span id="kerrpy-utils-progress-lib-module"></span><h2>kerrpy.utils.progress_lib module<a class="headerlink" href="#module-kerrpy.utils.progress_lib" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="kerrpy.utils.progress_lib.getTerminalSize">
+<code class="descclassname">kerrpy.utils.progress_lib.</code><code class="descname">getTerminalSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/progress_lib.html#getTerminalSize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.progress_lib.getTerminalSize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.progress_lib.mean">
+<code class="descclassname">kerrpy.utils.progress_lib.</code><code class="descname">mean</code><span class="sig-paren">(</span><em>vector</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/progress_lib.html#mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.progress_lib.mean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.progress_lib.progress_bar_init">
+<code class="descclassname">kerrpy.utils.progress_lib.</code><code class="descname">progress_bar_init</code><span class="sig-paren">(</span><em>max</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/progress_lib.html#progress_bar_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.progress_lib.progress_bar_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="kerrpy.utils.progress_lib.update_progress">
+<code class="descclassname">kerrpy.utils.progress_lib.</code><code class="descname">update_progress</code><span class="sig-paren">(</span><em>progress</em>, <em>time</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/utils/progress_lib.html#update_progress"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.utils.progress_lib.update_progress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-kerrpy.utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-kerrpy.utils" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Pablo Galindo and Alejandro García.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

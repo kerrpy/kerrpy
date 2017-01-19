@@ -67,7 +67,10 @@
      href="../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kerrpy.html">kerrpy package</a></li>
+</ul>
+</ul>
 </li>
               
                 <li class="dropdown">
@@ -138,7 +141,7 @@
 <span class="n">softwareDir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">selfDir</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">pardir</span><span class="p">))</span>
 
 
-<span class="k">def</span> <span class="nf">spher2cart</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+<div class="viewcode-block" id="spher2cart"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.spher2cart">[docs]</a><span class="k">def</span> <span class="nf">spher2cart</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
     <span class="c1"># Retrieve the actual data</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
     <span class="n">theta</span> <span class="o">=</span> <span class="n">points</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
@@ -153,7 +156,7 @@
     <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">sinT</span> <span class="o">*</span> <span class="n">sinP</span>
     <span class="n">z</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">cosT</span>
 
-    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span></div>
 
 
 <span class="n">SPHERE</span> <span class="o">=</span> <span class="mi">0</span>
@@ -162,7 +165,7 @@
 <span class="n">STRAIGHT</span> <span class="o">=</span> <span class="mi">3</span>
 
 
-<div class="viewcode-block" id="RayTracer"><a class="viewcode-back" href="../../index.html#kerrpy.raytracer.RayTracer">[docs]</a><span class="k">class</span> <span class="nc">RayTracer</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">LoggingClass</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer">[docs]</a><span class="k">class</span> <span class="nc">RayTracer</span><span class="p">(</span><span class="n">metaclass</span><span class="o">=</span><span class="n">LoggingClass</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Relativistic spacetime ray tracer.</span>
 
 <span class="sd">    This class generates images of what an observer would see near a rotating</span>
@@ -220,7 +223,7 @@
 <span class="sd">            rayTracer.plotImage()</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.__init__"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">camera</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">debug</span> <span class="o">=</span> <span class="n">debug</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">systemSize</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -262,7 +265,7 @@
 
         <span class="c1"># Initialise a variatble to store the total time of computation between</span>
         <span class="c1"># all calls</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">totalTime</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">totalTime</span> <span class="o">=</span> <span class="mf">0.</span></div>
 
     <span class="k">def</span> <span class="nf">_kernelRendering</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># We must construct a FileSystemLoader object to load templates off</span>
@@ -415,7 +418,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">systemState</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systemStateGPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">constants</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">constantsGPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">callKernel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.callKernel"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.callKernel">[docs]</a>    <span class="k">def</span> <span class="nf">callKernel</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_solve</span><span class="p">(</span>
             <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
             <span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">(</span><span class="n">xEnd</span><span class="p">),</span>
@@ -432,9 +435,9 @@
             <span class="c1"># Block definition -&gt; number of threads x number of threads</span>
             <span class="c1"># Each thread in the block computes one RK4 step for one</span>
             <span class="c1"># equation</span>
-            <span class="n">block</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">blockDim</span><span class="p">)</span>
+            <span class="n">block</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">blockDim</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="RayTracer.rayTrace"><a class="viewcode-back" href="../../index.html#kerrpy.raytracer.RayTracer.rayTrace">[docs]</a>    <span class="k">def</span> <span class="nf">rayTrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">,</span> <span class="n">kernelCalls</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.rayTrace"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.rayTrace">[docs]</a>    <span class="k">def</span> <span class="nf">rayTrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">,</span> <span class="n">kernelCalls</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Args:</span>
 <span class="sd">            xEnd (float): Time in which the system will be integrated. After</span>
@@ -476,7 +479,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">synchronise</span><span class="p">()</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rayStatus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">systemState</span></div>
 
-    <span class="k">def</span> <span class="nf">slicedRayTrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">,</span> <span class="n">numSteps</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.slicedRayTrace"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.slicedRayTrace">[docs]</a>    <span class="k">def</span> <span class="nf">slicedRayTrace</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xEnd</span><span class="p">,</span> <span class="n">numSteps</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
         <span class="n">stepSize</span> <span class="o">=</span> <span class="n">xEnd</span> <span class="o">/</span> <span class="n">numSteps</span>
 
         <span class="c1"># Initialize plotData with the initial position of the rays</span>
@@ -500,13 +503,13 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">plotData</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systemState</span><span class="p">[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">plotStatus</span><span class="p">[:,</span> <span class="p">:,</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rayStatus</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotStatus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotData</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotStatus</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">plotData</span></div>
 
-    <span class="k">def</span> <span class="nf">synchronise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.synchronise"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.synchronise">[docs]</a>    <span class="k">def</span> <span class="nf">synchronise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">rayStatus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rayStatusGPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">systemState</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systemStateGPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">systemState</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">systemStateGPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span></div>
 
-<div class="viewcode-block" id="RayTracer.texturedImage"><a class="viewcode-back" href="../../index.html#kerrpy.raytracer.RayTracer.texturedImage">[docs]</a>    <span class="k">def</span> <span class="nf">texturedImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disk</span><span class="p">,</span> <span class="n">sphere</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.texturedImage"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.texturedImage">[docs]</a>    <span class="k">def</span> <span class="nf">texturedImage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">disk</span><span class="p">,</span> <span class="n">sphere</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Image should be a 2D array where each entry is a 3-tuple of Reals</span>
 <span class="sd">        between 0.0 and 1.0</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -540,7 +543,7 @@
 
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span></div>
 
-    <span class="k">def</span> <span class="nf">dashed_textured_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="RayTracer.dashed_textured_image"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.raytracer.RayTracer.dashed_textured_image">[docs]</a>    <span class="k">def</span> <span class="nf">dashed_textured_image</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">imageRows</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">imageCols</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
         <span class="n">imageGPU</span> <span class="o">=</span> <span class="n">gpuarray</span><span class="o">.</span><span class="n">to_gpu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image</span><span class="p">)</span>
@@ -560,7 +563,7 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">image</span> <span class="o">=</span> <span class="n">imageGPU</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">image</span></div></div>
 </pre></div>
 
     </div>

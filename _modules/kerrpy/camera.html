@@ -67,7 +67,10 @@
      href="../../index.html">Site <b class="caret"></b></a>
   <ul class="dropdown-menu globaltoc"
       role="menu"
-      aria-labelledby="dLabelGlobalToc"></ul>
+      aria-labelledby="dLabelGlobalToc"><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kerrpy.html">kerrpy package</a></li>
+</ul>
+</ul>
 </li>
               
                 <li class="dropdown">
@@ -124,7 +127,7 @@
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">image</span> <span class="k">as</span> <span class="n">mimg</span>
 
 
-<div class="viewcode-block" id="Camera"><a class="viewcode-back" href="../../index.html#kerrpy.camera.Camera">[docs]</a><span class="k">class</span> <span class="nc">Camera</span><span class="p">:</span>
+<div class="viewcode-block" id="Camera"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.camera.Camera">[docs]</a><span class="k">class</span> <span class="nc">Camera</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Pinhole camera placed near a Kerr black hole.</span>
 
 <span class="sd">    This class contains the necessary data to define a camera that is located</span>
@@ -162,7 +165,7 @@
 <span class="sd">            facing the black hole centre.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="Camera.__init__"><a class="viewcode-back" href="../../index.html#kerrpy.camera.Camera.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">focalLength</span><span class="p">,</span> <span class="n">sensorShape</span><span class="p">,</span> <span class="n">sensorSize</span><span class="p">,</span> <span class="n">roll</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<div class="viewcode-block" id="Camera.__init__"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.camera.Camera.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">focalLength</span><span class="p">,</span> <span class="n">sensorShape</span><span class="p">,</span> <span class="n">sensorSize</span><span class="p">,</span> <span class="n">roll</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Builds the camera defined by `focalLength`, `sensorShape` and</span>
 <span class="sd">        `sensorSize` and locates it at the passed coordinates :math:`(r_c,</span>
 <span class="sd">        \\theta_c, \\phi_c)`</span>
@@ -223,9 +226,9 @@
         <span class="c1"># Add camera to the Universe</span>
         <span class="n">universe</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<div class="viewcode-block" id="Camera.__del__"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.camera.Camera.__del__">[docs]</a>    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Remove camera from the Universe</span>
-        <span class="n">universe</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="n">universe</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
 
     <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># Compute the value of the metric on the camera position</span>
@@ -373,7 +376,7 @@
         <span class="c1"># Update the computation on pixel width and height</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">pixelWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixelHeight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_pixel_size</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">shoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finalTime</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">diskPath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spherePath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dashed_texture</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="Camera.shoot"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.camera.Camera.shoot">[docs]</a>    <span class="k">def</span> <span class="nf">shoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finalTime</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">diskPath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spherePath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dashed_texture</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">RayTracer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
 
@@ -394,11 +397,11 @@
 
             <span class="n">texels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">texturedImage</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sphere</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="n">CongruenceSnapshot</span><span class="p">(</span><span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span><span class="p">,</span> <span class="n">texels</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">totalTime</span>
+        <span class="k">return</span> <span class="n">CongruenceSnapshot</span><span class="p">(</span><span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span><span class="p">,</span> <span class="n">texels</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">totalTime</span></div>
 
-    <span class="k">def</span> <span class="nf">slicedShoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finalTime</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">slicesNum</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="viewcode-block" id="Camera.slicedShoot"><a class="viewcode-back" href="../../kerrpy.html#kerrpy.camera.Camera.slicedShoot">[docs]</a>    <span class="k">def</span> <span class="nf">slicedShoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finalTime</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">slicesNum</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
         <span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">slicedRayTrace</span><span class="p">(</span><span class="n">finalTime</span><span class="p">,</span> <span class="n">slicesNum</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Congruence</span><span class="p">(</span><span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="n">Congruence</span><span class="p">(</span><span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span><span class="p">)</span></div></div>
 </pre></div>
 
     </div>

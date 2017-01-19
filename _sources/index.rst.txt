@@ -9,8 +9,9 @@ Welcome to kerrpy's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
-
+   :maxdepth: 4
+    
+   kerrpy
 
 
 Indices and tables
@@ -24,7 +25,7 @@ Indices and tables
 Testing
 =======
 
-.. .. currentmodule:: raytracer
+.. .. currentmodule:: kerrpy 
 
 .. autoclass:: kerrpy.camera.Camera
     :members:
