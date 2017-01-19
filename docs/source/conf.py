@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# TFG documentation build configuration file, created by
+# kerrpy documentation build configuration file, created by
 # sphinx-quickstart on Wed Aug 10 14:00:40 2016.
 #
 # This file is execfile()d with the current directory set to its
@@ -21,10 +21,7 @@ import sphinx_bootstrap_theme
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../..'))
-sys.path.insert(0, os.path.abspath('../../../Software/Raytracer'))
-sys.path.insert(0, os.path.abspath('../../../Software/RK4'))
-sys.path.insert(0, os.path.abspath('../../../Software/Utils'))
+sys.path.insert(0, os.path.abspath('../../kerrpy'))
 
 # -- General configuration ------------------------------------------------
 
@@ -35,16 +32,7 @@ sys.path.insert(0, os.path.abspath('../../../Software/Utils'))
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.napoleon',
-    'sphinx.ext.todo',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.viewcode',
-    'sphinx.ext.githubpages',
-    'sphinxcontrib.bibtex',
-    'breathe'
-]
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.todo', 'sphinx.ext.mathjax', 'sphinx.ext.viewcode', 'sphinx.ext.githubpages', 'sphinxcontrib.bibtex', 'breathe']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -63,9 +51,9 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'TFG'
-copyright = '2016, Alejandro García Montoro'
-author = 'Alejandro García Montoro'
+project = 'kerrpy'
+copyright = '2017, Pablo Galindo and Alejandro García'
+author = 'Pablo Galindo and Alejandro García'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -128,7 +116,6 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
-
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -148,7 +135,7 @@ html_theme = 'alabaster'
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = 'TFG v0.1'
+# html_title = 'kerrpy v0.1'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -248,35 +235,32 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'TFGdoc'
+htmlhelp_basename = 'kerrpydoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
-     # The paper size ('letterpaper' or 'a4paper').
-     #
-     # 'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    #
+    # 'papersize': 'letterpaper',
 
-     # The font size ('10pt', '11pt' or '12pt').
-     #
-     # 'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    #
+    # 'pointsize': '10pt',
 
-     # Additional stuff for the LaTeX preamble.
-     #
-     # 'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    #
+    # 'preamble': '',
 
-     # Latex figure (float) alignment
-     #
-     # 'figure_align': 'htbp',
+    # Latex figure (float) alignment
+    #
+    # 'figure_align': 'htbp',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'TFG.tex', 'TFG Documentation',
-     'Alejandro García Montoro', 'manual'),
-]
+# latex_documents = [(master_doc, 'kerrpy.tex', 'kerrpy Documentation', 'Alejandro García Montoro', 'manual'), ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -310,31 +294,22 @@ latex_documents = [
 #
 # latex_domain_indices = True
 
-
 # -- Options for manual page output ---------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'tfg', 'TFG Documentation',
-     [author], 1)
-]
+man_pages = [(master_doc, 'kerrpy', 'kerrpy Documentation', [author], 1)]
 
 # If true, show URL addresses after external links.
 #
 # man_show_urls = False
-
 
 # -- Options for Texinfo output -------------------------------------------
 
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'TFG', 'TFG Documentation',
-     author, 'TFG', 'One line description of project.',
-     'Miscellaneous'),
-]
+texinfo_documents = [(master_doc, 'kerrpy', 'kerrpy Documentation', author, 'kerrpy', 'One line description of project.', 'Miscellaneous'), ]
 
 # Documents to append as an appendix to all manuals.
 #
@@ -373,8 +348,6 @@ html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # -- Doxygen configuration ------------------------------------------------
 
-breathe_projects = {
-    "TFG": "../build/doxygen/xml/",
-}
+breathe_projects = {"kerrpy": "../build/doxygen/xml/", }
 
-breathe_default_project = "TFG"
+breathe_default_project = "kerrpy"

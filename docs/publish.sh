@@ -30,6 +30,9 @@ then
         # Keep only the sphinx output
         rm -rf docs/  GUI/  kerrpy/  LICENSE  MANIFEST.in  README.md  requirements.txt  setup.py
 
+        # To avoid gh-pages breaking static files
+        touch .nojekyll
+
         # Add everything, commit and push to Github
         git add -A && git commit -am "Pushing to gh-pages: $GIT_LAST_COMMIT" && git push origin gh-pages
     fi
