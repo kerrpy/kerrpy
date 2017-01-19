@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>kerrpy.camera &#8212; kerrpy 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.6/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-3.3.6/css/bootstrap-theme.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+  </head>
+  <body role="document">
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../../index.html">
+          kerrpy</a>
+        <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../../index.html">Site <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"></ul>
+</li>
+              
+                <li class="dropdown">
+  <a role="button"
+     id="dLabelLocalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="#">Page <b class="caret"></b></a>
+  <ul class="dropdown-menu localtoc"
+      role="menu"
+      aria-labelledby="dLabelLocalToc"></ul>
+</li>
+              
+            
+            
+              
+                
+              
+            
+            
+            
+            
+              <li class="hidden-sm"></li>
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 content">
+      
+  <h1>Source code for kerrpy.camera</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.universe</span> <span class="k">import</span> <span class="n">universe</span>
+<span class="kn">from</span> <span class="nn">.raytracer</span> <span class="k">import</span> <span class="n">RayTracer</span>
+<span class="kn">from</span> <span class="nn">.geodesics</span> <span class="k">import</span> <span class="n">Congruence</span><span class="p">,</span> <span class="n">CongruenceSnapshot</span>
+
+<span class="kn">from</span> <span class="nn">.utils.attr_dict</span> <span class="k">import</span> <span class="n">AttrDict</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">image</span> <span class="k">as</span> <span class="n">mimg</span>
+
+
+<div class="viewcode-block" id="Camera"><a class="viewcode-back" href="../../index.html#kerrpy.camera.Camera">[docs]</a><span class="k">class</span> <span class="nc">Camera</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Pinhole camera placed near a Kerr black hole.</span>
+
+<span class="sd">    This class contains the necessary data to define a camera that is located</span>
+<span class="sd">    on the coordinate system of a Kerr black hole.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        r (double): Distance to the coordinate origin; i.e., distance to the</span>
+<span class="sd">            black hole centre.</span>
+<span class="sd">        r2 (double): Square of `r`.</span>
+<span class="sd">        theta (double): Inclination of the camera with respect to the black</span>
+<span class="sd">            hole.</span>
+<span class="sd">        phi (double): Azimuth of the camera with respect to the black hole.</span>
+<span class="sd">        focalLength (double): Distance between the focal point (where every ray</span>
+<span class="sd">            that reaches the camera has to pass through) and the focal plane</span>
+<span class="sd">            (where the actual sensor/film is placed).</span>
+<span class="sd">        sensorSize (tuple): 2-tuple that defines the physical dimensions of the</span>
+<span class="sd">            sensor in the following way: `(Height, Width)`.</span>
+<span class="sd">        sensorShape (tuple): 2-tuple that defines the number of pixels of the</span>
+<span class="sd">            sensor in the following way: `(Number of rows, Number of columns)`.</span>
+<span class="sd">        pixelWidth (double): Width of one single pixel in physical units. It is</span>
+<span class="sd">            computed as `Number of columns / Sensor width`.</span>
+<span class="sd">        pixelHeight (double): Height of one single pixel in physical units. It</span>
+<span class="sd">            is computed as `Number of rows / Sensor height`.</span>
+<span class="sd">        speed (double): Speed of the camera, that follows a circular orbit</span>
+<span class="sd">            around the black hole in the equatorial plane. It is computed using</span>
+<span class="sd">            the formula (A.7) of Thorne&#39;s paper.</span>
+<span class="sd">        roll (double): The roll angle of the CCD; i.e., the rotation angle</span>
+<span class="sd">            of the CCD on its plane. Defaults to zero, that means the CCD is</span>
+<span class="sd">            facing the black hole centre.</span>
+<span class="sd">        pitch (double): The pitch angle of the CCD; i.e., the above/below</span>
+<span class="sd">            direction of looking. Defaults to zero, that means the CCD is</span>
+<span class="sd">            facing the black hole centre.</span>
+<span class="sd">        yaw (double): The yaw angle of the CCD; i.e., the left/right</span>
+<span class="sd">            direction of lookin. Defaults to zero, that means the CCD is</span>
+<span class="sd">            facing the black hole centre.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Camera.__init__"><a class="viewcode-back" href="../../index.html#kerrpy.camera.Camera.__init__">[docs]</a>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">focalLength</span><span class="p">,</span> <span class="n">sensorShape</span><span class="p">,</span> <span class="n">sensorSize</span><span class="p">,</span> <span class="n">roll</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pitch</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">yaw</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Builds the camera defined by `focalLength`, `sensorShape` and</span>
+<span class="sd">        `sensorSize` and locates it at the passed coordinates :math:`(r_c,</span>
+<span class="sd">        \\theta_c, \\phi_c)`</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            r (double): Distance to the coordinate origin; i.e., distance to</span>
+<span class="sd">                the black hole centre.</span>
+<span class="sd">            theta (double): Inclination of the camera with respect to the black</span>
+<span class="sd">                hole.</span>
+<span class="sd">            phi (double): Azimuth of the camera with respect to the black hole.</span>
+<span class="sd">            focalLength (double): Distance between the focal point (where every</span>
+<span class="sd">                row that reaces the camera has to pass through) and the focal</span>
+<span class="sd">                plane (where the actual sensor/film is placed).</span>
+<span class="sd">            sensorShape (tuple): 2-tuple that defines the number of pixels of</span>
+<span class="sd">                the sensor in the following way: `(Number of rows, Number of</span>
+<span class="sd">                columns)`.</span>
+<span class="sd">            sensorSize (tuple): 2-tuple that defines the physical dimensions of</span>
+<span class="sd">                the sensor in the following way: `(Height, Width)`.</span>
+<span class="sd">            roll (double): The roll angle of the CCD; i.e., the rotation angle</span>
+<span class="sd">                of the CCD on the plane of the CCD. Defaults to zero, that</span>
+<span class="sd">                means the CCD is facing the black hole centre.</span>
+<span class="sd">            pitch (double): The pitch angle of the CCD; i.e., the above/below</span>
+<span class="sd">                direction of looking. Defaults to zero, that means the CCD is</span>
+<span class="sd">                facing the black hole centre.</span>
+<span class="sd">            yaw (double): The yaw angle of the CCD; i.e., the left/right</span>
+<span class="sd">                direction of lookin. Defaults to zero, that means the CCD is</span>
+<span class="sd">                facing the black hole centre.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Define position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_r</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r2</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span> <span class="o">=</span> <span class="n">theta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phi</span> <span class="o">=</span> <span class="n">phi</span>
+
+        <span class="c1"># Define lens properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">focalLength</span> <span class="o">=</span> <span class="n">focalLength</span>
+
+        <span class="c1"># Define sensor properties</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sensorShape</span> <span class="o">=</span> <span class="n">sensorShape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sensorSize</span> <span class="o">=</span> <span class="n">sensorSize</span>
+
+        <span class="c1"># Define rotation of the CCD</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">roll</span> <span class="o">=</span> <span class="n">roll</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pitch</span> <span class="o">=</span> <span class="n">pitch</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">yaw</span> <span class="o">=</span> <span class="n">yaw</span>
+
+        <span class="c1"># Compute the width and height of a pixel on physical units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pixelWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixelHeight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_pixel_size</span><span class="p">()</span>
+
+        <span class="c1"># Compute every property for the camera: metric, speed, engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+
+        <span class="c1"># Compile engine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">RayTracer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="c1"># Add camera to the Universe</span>
+        <span class="n">universe</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Remove camera from the Universe</span>
+        <span class="n">universe</span><span class="o">.</span><span class="n">cameras</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Compute the value of the metric on the camera position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_metric_value</span><span class="p">()</span>
+
+        <span class="c1"># Compute the speed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">speed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_speed</span><span class="p">()</span>
+
+        <span class="c1"># Recompile ray tracer in the next photo</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_compute_pixel_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Compute the width and height of a pixel, taking into account the</span>
+<span class="sd">        physical measure of the sensor (sensorSize) and the number of pixels</span>
+<span class="sd">        per row and per column on the sensor (sensorShape)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Shorten long named variables to ease the notation</span>
+        <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensorSize</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensorSize</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">rows</span><span class="p">,</span> <span class="n">cols</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensorShape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">sensorShape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Compute width and height of a pixel</span>
+        <span class="n">pixelWidth</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">W</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
+        <span class="n">pixelHeight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">H</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">rows</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pixelWidth</span><span class="p">,</span> <span class="n">pixelHeight</span>
+
+    <span class="k">def</span> <span class="nf">_compute_metric_value</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Shorten long named variables to ease the notation</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">spin</span>
+        <span class="n">a2</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">spinSquared</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span>
+        <span class="n">r2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r2</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">theta</span>
+
+        <span class="c1"># Compute the constants described between (A.1) and (A.2)</span>
+        <span class="n">ro</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">r2</span> <span class="o">+</span> <span class="n">a2</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">delta</span> <span class="o">=</span> <span class="n">r2</span> <span class="o">+</span> <span class="n">a2</span>
+        <span class="n">sigma</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">((</span><span class="n">r2</span> <span class="o">+</span> <span class="n">a2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">a2</span> <span class="o">*</span> <span class="n">delta</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="n">ro</span> <span class="o">*</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span>
+        <span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">a</span> <span class="o">*</span> <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Wut? pomega? See https://en.wikipedia.org/wiki/Pi_(letter)#Variant_pi</span>
+        <span class="n">pomega</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">/</span> <span class="n">ro</span>
+
+        <span class="k">return</span> <span class="n">AttrDict</span><span class="p">(</span><span class="n">ro</span><span class="o">=</span><span class="n">ro</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">omega</span><span class="p">,</span> <span class="n">pomega</span><span class="o">=</span><span class="n">pomega</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_compute_speed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Given a Kerr metric and a black hole, this method sets the speed of</span>
+<span class="sd">        the camera at a circular orbit in the equatorial plane, following</span>
+<span class="sd">        formula (A.7) of :cite:`thorne15`:</span>
+
+<span class="sd">        .. math::</span>
+<span class="sd">            \\beta = \\frac{\\varpi}{\\alpha}(\\Omega - \\omega),</span>
+
+<span class="sd">        where :math:`\\Omega = \\frac{1}{a + r_c^{3/2}}` and the other</span>
+<span class="sd">        constants are the ones defined in the Kerr metric object. See</span>
+<span class="sd">        :class:`~.KerrMetric`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            kerr (:class:`~.KerrMetric`): A :class:`~.KerrMetric` object</span>
+<span class="sd">            containing the constants needed for the</span>
+<span class="sd">                equations.</span>
+<span class="sd">            blackHole (:class:`~.BlackHole`): A :class:`~.BlackHole` object</span>
+<span class="sd">            containing the</span>
+<span class="sd">                specifications of the black hole located a the coordinate</span>
+<span class="sd">                origin.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># Retrieve blackhole&#39;s spin and some Kerr constants</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">spin</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span>
+        <span class="n">pomega</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">pomega</span>
+        <span class="n">omega</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">omega</span>
+        <span class="n">alpha</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="o">.</span><span class="n">alpha</span>
+
+        <span class="c1"># Define speed with equation (A.7)</span>
+        <span class="n">Omega</span> <span class="o">=</span> <span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">r</span><span class="o">**</span><span class="p">(</span><span class="mf">3.</span> <span class="o">/</span> <span class="mf">2.</span><span class="p">))</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="n">pomega</span> <span class="o">*</span> <span class="p">(</span><span class="n">Omega</span> <span class="o">-</span> <span class="n">omega</span><span class="p">)</span> <span class="o">/</span> <span class="n">alpha</span>
+
+        <span class="c1"># FIXME: This is being forced to zero only for testing purposes.</span>
+        <span class="c1"># Remove this line if you want some real fancy images.</span>
+        <span class="n">beta</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="n">beta</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">r</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_r</span>
+
+    <span class="nd">@r</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">r</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newValue</span><span class="p">):</span>
+        <span class="c1"># Set r coordinate and its square</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_r</span> <span class="o">=</span> <span class="n">newValue</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">r2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">r</span>
+
+        <span class="c1"># Compute again the value of the metric on the camera position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">theta</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span>
+
+    <span class="nd">@theta</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">theta</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newValue</span><span class="p">):</span>
+        <span class="c1"># Set theta coordinate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_theta</span> <span class="o">=</span> <span class="n">newValue</span>
+
+        <span class="c1"># Compute again the value of the metric on the camera position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_phi</span>
+
+    <span class="nd">@phi</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newValue</span><span class="p">):</span>
+        <span class="c1"># Set phi angle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_phi</span> <span class="o">=</span> <span class="n">newValue</span>
+
+        <span class="c1"># Compute again the value of the metric on the camera position</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sensorShape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensorShape</span>
+
+    <span class="nd">@sensorShape</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">sensorShape</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newValue</span><span class="p">):</span>
+        <span class="c1"># Set sensor shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sensorShape</span> <span class="o">=</span> <span class="n">newValue</span>
+
+        <span class="c1"># Update the computation on pixel width and height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pixelWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixelHeight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_pixel_size</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sensorSize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sensorSize</span>
+
+    <span class="nd">@sensorSize</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">sensorSize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">newValue</span><span class="p">):</span>
+        <span class="c1"># Set sensor shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sensorSize</span> <span class="o">=</span> <span class="n">newValue</span>
+
+        <span class="c1"># Update the computation on pixel width and height</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">pixelWidth</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">pixelHeight</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_pixel_size</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">shoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finalTime</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">diskPath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spherePath</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dashed_texture</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">RayTracer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">RayTracer</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">rayTrace</span><span class="p">(</span><span class="n">finalTime</span><span class="p">)</span>
+
+        <span class="n">texels</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">dashed_texture</span><span class="p">:</span>
+
+            <span class="n">texels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">dashed_textured_image</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="n">diskPath</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">spherePath</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">disk</span> <span class="o">=</span> <span class="n">mimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">diskPath</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+            <span class="n">sphere</span> <span class="o">=</span> <span class="n">mimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">spherePath</span><span class="p">)[:,</span> <span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+
+            <span class="n">texels</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">texturedImage</span><span class="p">(</span><span class="n">disk</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sphere</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">CongruenceSnapshot</span><span class="p">(</span><span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span><span class="p">,</span> <span class="n">texels</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">totalTime</span>
+
+    <span class="k">def</span> <span class="nf">slicedShoot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">finalTime</span><span class="o">=-</span><span class="mi">150</span><span class="p">,</span> <span class="n">slicesNum</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+        <span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="o">.</span><span class="n">slicedRayTrace</span><span class="p">(</span><span class="n">finalTime</span><span class="p">,</span> <span class="n">slicesNum</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Congruence</span><span class="p">(</span><span class="n">raysStatus</span><span class="p">,</span> <span class="n">raysCoordinates</span><span class="p">)</span></div>
+</pre></div>
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+    </p>
+    <p>
+        &copy; Copyright 2017, Pablo Galindo and Alejandro García.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

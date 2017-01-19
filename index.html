@@ -139,9 +139,250 @@
 </div>
 <div class="section" id="testing">
 <h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="kerrpy.camera.Camera">
+<em class="property">class </em><code class="descclassname">kerrpy.camera.</code><code class="descname">Camera</code><span class="sig-paren">(</span><em>r</em>, <em>theta</em>, <em>phi</em>, <em>focalLength</em>, <em>sensorShape</em>, <em>sensorSize</em>, <em>roll=0</em>, <em>pitch=0</em>, <em>yaw=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pinhole camera placed near a Kerr black hole.</p>
+<p>This class contains the necessary data to define a camera that is located
+on the coordinate system of a Kerr black hole.</p>
+<dl class="attribute">
+<dt id="Camera.r">
+<code class="descname">r</code><a class="headerlink" href="#Camera.r" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Distance to the coordinate origin; i.e., distance to the
+black hole centre.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.r2">
+<code class="descname">r2</code><a class="headerlink" href="#Camera.r2" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Square of <cite>r</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.theta">
+<code class="descname">theta</code><a class="headerlink" href="#Camera.theta" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Inclination of the camera with respect to the black
+hole.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.phi">
+<code class="descname">phi</code><a class="headerlink" href="#Camera.phi" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Azimuth of the camera with respect to the black hole.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.focalLength">
+<code class="descname">focalLength</code><a class="headerlink" href="#Camera.focalLength" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Distance between the focal point (where every ray
+that reaches the camera has to pass through) and the focal plane
+(where the actual sensor/film is placed).</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.sensorSize">
+<code class="descname">sensorSize</code><a class="headerlink" href="#Camera.sensorSize" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> &#8211; 2-tuple that defines the physical dimensions of the
+sensor in the following way: <cite>(Height, Width)</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.sensorShape">
+<code class="descname">sensorShape</code><a class="headerlink" href="#Camera.sensorShape" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>tuple</em> &#8211; 2-tuple that defines the number of pixels of the
+sensor in the following way: <cite>(Number of rows, Number of columns)</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.pixelWidth">
+<code class="descname">pixelWidth</code><a class="headerlink" href="#Camera.pixelWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Width of one single pixel in physical units. It is
+computed as <cite>Number of columns / Sensor width</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.pixelHeight">
+<code class="descname">pixelHeight</code><a class="headerlink" href="#Camera.pixelHeight" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Height of one single pixel in physical units. It
+is computed as <cite>Number of rows / Sensor height</cite>.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.speed">
+<code class="descname">speed</code><a class="headerlink" href="#Camera.speed" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; Speed of the camera, that follows a circular orbit
+around the black hole in the equatorial plane. It is computed using
+the formula (A.7) of Thorne&#8217;s paper.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.roll">
+<code class="descname">roll</code><a class="headerlink" href="#Camera.roll" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; The roll angle of the CCD; i.e., the rotation angle
+of the CCD on its plane. Defaults to zero, that means the CCD is
+facing the black hole centre.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.pitch">
+<code class="descname">pitch</code><a class="headerlink" href="#Camera.pitch" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; The pitch angle of the CCD; i.e., the above/below
+direction of looking. Defaults to zero, that means the CCD is
+facing the black hole centre.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="Camera.yaw">
+<code class="descname">yaw</code><a class="headerlink" href="#Camera.yaw" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>double</em> &#8211; The yaw angle of the CCD; i.e., the left/right
+direction of lookin. Defaults to zero, that means the CCD is
+facing the black hole centre.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.camera.Camera.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>r</em>, <em>theta</em>, <em>phi</em>, <em>focalLength</em>, <em>sensorShape</em>, <em>sensorSize</em>, <em>roll=0</em>, <em>pitch=0</em>, <em>yaw=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/camera.html#Camera.__init__"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.camera.Camera.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Builds the camera defined by <cite>focalLength</cite>, <cite>sensorShape</cite> and
+<cite>sensorSize</cite> and locates it at the passed coordinates <span class="math">\((r_c,
+\theta_c, \phi_c)\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>r</strong> (<em>double</em>) &#8211; Distance to the coordinate origin; i.e., distance to
+the black hole centre.</li>
+<li><strong>theta</strong> (<em>double</em>) &#8211; Inclination of the camera with respect to the black
+hole.</li>
+<li><strong>phi</strong> (<em>double</em>) &#8211; Azimuth of the camera with respect to the black hole.</li>
+<li><strong>focalLength</strong> (<em>double</em>) &#8211; Distance between the focal point (where every
+row that reaces the camera has to pass through) and the focal
+plane (where the actual sensor/film is placed).</li>
+<li><strong>sensorShape</strong> (<em>tuple</em>) &#8211; 2-tuple that defines the number of pixels of
+the sensor in the following way: <cite>(Number of rows, Number of
+columns)</cite>.</li>
+<li><strong>sensorSize</strong> (<em>tuple</em>) &#8211; 2-tuple that defines the physical dimensions of
+the sensor in the following way: <cite>(Height, Width)</cite>.</li>
+<li><strong>roll</strong> (<em>double</em>) &#8211; The roll angle of the CCD; i.e., the rotation angle
+of the CCD on the plane of the CCD. Defaults to zero, that
+means the CCD is facing the black hole centre.</li>
+<li><strong>pitch</strong> (<em>double</em>) &#8211; The pitch angle of the CCD; i.e., the above/below
+direction of looking. Defaults to zero, that means the CCD is
+facing the black hole centre.</li>
+<li><strong>yaw</strong> (<em>double</em>) &#8211; The yaw angle of the CCD; i.e., the left/right
+direction of lookin. Defaults to zero, that means the CCD is
+facing the black hole centre.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="kerrpy.camera.Camera.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.camera.Camera.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="kerrpy.raytracer.RayTracer">
+<em class="property">class </em><code class="descclassname">kerrpy.raytracer.</code><code class="descname">RayTracer</code><span class="sig-paren">(</span><em>camera</em>, <em>debug=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Relativistic spacetime ray tracer.</p>
+<p>This class generates images of what an observer would see near a rotating
+black hole.</p>
+<p>This is an abstraction layer over the CUDA kernel that integrates the ODE
+system specified in equations (A.15) of Thorne&#8217;s paper. It integrates,
+backwards in time, a set of rays near a Kerr black hole, computing its
+trajectories from the focal point of a camera located near the black hole.</p>
+<p>The RayTracer class hides all the black magic behind the CUDA code, giving
+a nice and simple interface to the user that just wants some really cool,
+and scientifically accurate, images.</p>
+<p>Given a scene composed by a camera, a Kerr metric and a black hole, the
+RayTracer just expects a time <span class="math">\(x_{end}\)</span> to solve the system.</p>
+<p class="rubric">Example</p>
+<p>Define the characteristics of the black hole and build it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">spin</span> <span class="o">=</span> <span class="mf">0.9999999999</span>
+<span class="n">innerDiskRadius</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">outerDiskRadius</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">blackHole</span> <span class="o">=</span> <span class="n">BlackHole</span><span class="p">(</span><span class="n">spin</span><span class="p">,</span> <span class="n">innerDiskRadius</span><span class="p">,</span> <span class="n">outerDiskRadius</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Define the specifications of the camera and build it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">camR</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">camTheta</span> <span class="o">=</span> <span class="mf">1.511</span>
+<span class="n">camPhi</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">camFocalLength</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">camSensorShape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># (Rows, Columns)</span>
+<span class="n">camSensorSize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>         <span class="c1"># (Height, Width)</span>
+<span class="n">camera</span> <span class="o">=</span> <span class="n">Camera</span><span class="p">(</span><span class="n">camR</span><span class="p">,</span> <span class="n">camTheta</span><span class="p">,</span> <span class="n">camPhi</span><span class="p">,</span>
+                <span class="n">camFocalLength</span><span class="p">,</span> <span class="n">camSensorShape</span><span class="p">,</span> <span class="n">camSensorSize</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Create a Kerr metric with the previous two objects:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">kerr</span> <span class="o">=</span> <span class="n">KerrMetric</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">blackHole</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set the speed of the camera once the Kerr metric and the black hole are
+created: it needs some info from both of these objects:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">camera</span><span class="o">.</span><span class="n">setSpeed</span><span class="p">(</span><span class="n">kerr</span><span class="p">,</span> <span class="n">blackHole</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, build the raytracer with the camera, the metric and the black
+hole...:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rayTracer</span> <span class="o">=</span> <span class="n">RayTracer</span><span class="p">(</span><span class="n">camera</span><span class="p">,</span> <span class="n">kerr</span><span class="p">,</span> <span class="n">blackHole</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>...and generate the image!:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rayTracer</span><span class="o">.</span><span class="n">rayTrace</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">rayTracer</span><span class="o">.</span><span class="n">synchronise</span><span class="p">()</span>
+<span class="n">rayTracer</span><span class="o">.</span><span class="n">plotImage</span><span class="p">()</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="kerrpy.raytracer.RayTracer.__weakref__">
+<code class="descname">__weakref__</code><a class="headerlink" href="#kerrpy.raytracer.RayTracer.__weakref__" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of weak references to the object (if defined)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.rayTrace">
+<code class="descname">rayTrace</code><span class="sig-paren">(</span><em>xEnd</em>, <em>kernelCalls=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.rayTrace"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.rayTrace" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>xEnd</strong> (<em>float</em>) &#8211; Time in which the system will be integrated. After
+this method finishes, the value of the rays at t=xEnd will be
+known</li>
+<li><strong>stepsPerKernel</strong> (<em>integer</em>) &#8211; The number of steps each kernel call will
+compute; i.e., the host will call the kernel
+xEnd / (resolution*stepsPerKernel) times.</li>
+<li><strong>resolution</strong> (<em>float</em>) &#8211; The size of the interval that will be used to
+compute one solver step between successive calls to the
+collision detection method.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="kerrpy.raytracer.RayTracer.texturedImage">
+<code class="descname">texturedImage</code><span class="sig-paren">(</span><em>disk</em>, <em>sphere</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/kerrpy/raytracer.html#RayTracer.texturedImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#kerrpy.raytracer.RayTracer.texturedImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image should be a 2D array where each entry is a 3-tuple of Reals
+between 0.0 and 1.0</p>
+</dd></dl>
+
+</dd></dl>
+
 <p>This is a test to know whether the figure automatic numbering really works. See <a class="reference internal" href="#my-figure-ref"><span class="std std-numref">Fig. 1</span></a> if everything&#8217;s fine.</p>
 <div class="figure" id="id8">
-<span id="my-figure-ref"></span><a class="reference internal image-reference" href="../../../Res/sphinxTest.png"><img alt="map to buried treasure" src="../../../Res/sphinxTest.png" /></a>
+<span id="my-figure-ref"></span><a class="reference internal image-reference" href="_images/sphinxTest.png"><img alt="map to buried treasure" src="_images/sphinxTest.png" style="width: 288.0px; height: 190.5px;" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">This is the caption of the figure (a simple paragraph).</span></p>
 <div class="legend">
 The legend consists of all elements after the caption.  In this
@@ -152,20 +393,20 @@ table.</div>
 <div class="section" id="doxygen-testing">
 <h1>Doxygen testing<a class="headerlink" href="#doxygen-testing" title="Permalink to this headline">¶</a></h1>
 <p>This file implements two numerical solvers for systems of N first order ordinary differential equations (y&#8217; = F(x,y)). <p>The first solver, implemented in SolverRK45 and originally called DOPRI5, is
-described in [hairer93] and [hairer96]. Specifically, see Table
-5.2 [hairer93] for the Butcher&#8217;s table and Section II.4, subsection
-&#8220;Automatic Step Size Control&#8221; [hairer93], for the automatic control
+described in <a class="reference internal" href="#hairer93" id="id1">[HNW93]</a> and <a class="reference internal" href="#hairer96" id="id2">[HW96]</a>. Specifically, see Table
+5.2 <a class="reference internal" href="#hairer93" id="id3">[HNW93]</a> for the Butcher&#8217;s table and Section II.4, subsection
+&#8220;Automatic Step Size Control&#8221; <a class="reference internal" href="#hairer93" id="id4">[HNW93]</a>, for the automatic control
 of the solver inner step size.
-See also Section IV.2 [hairer96] for the stabilized algorithm.
-The second solver, SolverRK45, is adapted from [chanrepo16], and
-described at [chan13].</p>
+See also Section IV.2 <a class="reference internal" href="#hairer96" id="id5">[HW96]</a> for the stabilized algorithm.
+The second solver, SolverRK45, is adapted from <a class="reference internal" href="#chanrepo16" id="id6">[Cha16]</a>, and
+described at <a class="reference internal" href="#chan13" id="id7">[CPO13]</a>.</p>
 </p>
 <p>Given an ODEs system, a matrix of initial conditions, each one of the form <span class="math">\( (x_0, y_0) \)</span>, and an interval <span class="math">\( [x_0, x_{end}] \)</span>, this code computes the value of the system at <span class="math">\( x_{end} \)</span> for each one of the initial conditions. The computation is GPU parallelized using CUDA. </p>
 <div class="breathe-sectiondef docutils container">
 <p class="breathe-sectiondef-title rubric">Functions</p>
 <dl class="function">
-<dt>
-<span class="target" id="kerrpysolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span><code class="descname">static __device__ Real advanceStep(Real * y0, Real h, Real * y1, Real * data)</code></dt>
+<dt id="_CPPv211advanceStepP4Real4RealP4RealP4Real">
+<span id="advanceStep__RealP.Real.RealP.RealP"></span><span class="target" id="kerrpysolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span>__device__ <em class="property">static</em> Real <code class="descclassname"></code><code class="descname">advanceStep</code><span class="sig-paren">(</span>Real *<em>y0</em>, Real <em>h</em>, Real *<em>y1</em>, Real *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv211advanceStepP4Real4RealP4RealP4Real" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>This method uses DOPRI5 to advance a time of <code class="docutils literal"><span class="pre">h</span></code> the system stored in <code class="docutils literal"><span class="pre">y0</span></code>. It reads the system state passed as <code class="docutils literal"><span class="pre">y0</span></code>, advance it using the step <code class="docutils literal"><span class="pre">h</span></code> and stores the result in <code class="docutils literal"><span class="pre">y1</span></code>. The last parameter, data, is used by the rhs of the system. <dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The normalized estimated error of the step. </dd>
@@ -182,8 +423,8 @@ described at [chan13].</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<span class="target" id="kerrpysolvers_8cu_1aa63690a91dd55db0487c0499251cfdb6"></span><code class="descname">__device__ int bisect(Real * yOriginal, Real * data, Real step, Real x)</code></dt>
+<dt id="_CPPv26bisectP4RealP4Real4Real4Real">
+<span id="bisect__RealP.RealP.Real.Real"></span><span class="target" id="kerrpysolvers_8cu_1aa63690a91dd55db0487c0499251cfdb6"></span>__device__ int <code class="descclassname"></code><code class="descname">bisect</code><span class="sig-paren">(</span>Real *<em>yOriginal</em>, Real *<em>data</em>, Real <em>step</em>, Real <em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv26bisectP4RealP4Real4Real4Real" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>This function receives the current state of a ray that has just crossed the equatorial plane (theta = pi/2) and makes a binary search of the exact (with a tolerance of BISECT_TOL) point in which the ray crossed it. This code expects the following:<ul class="simple">
 <li>In time = x, the ray is at one side of the equatorial plane.</li>
 <li>In time = x - step, the ray was at the opposite side of the equatorial plane.</li>
@@ -205,8 +446,8 @@ described at [chan13].</p>
 </dd></dl>
 
 <dl class="function">
-<dt>
-<span class="target" id="kerrpysolvers_8cu_1a178e11898404e5ee33e6002e65afe2a4"></span><code class="descname">__device__ int SolverRK45(Real * globalX0, Real xend, Real * initCond, Real hOrig, Real hmax, Real * data, int * iterations)</code></dt>
+<dt id="_CPPv210SolverRK45P4Real4RealP4Real4Real4RealP4RealPi">
+<span id="SolverRK45__RealP.Real.RealP.Real.Real.RealP.iP"></span><span class="target" id="kerrpysolvers_8cu_1a178e11898404e5ee33e6002e65afe2a4"></span>__device__ int <code class="descclassname"></code><code class="descname">SolverRK45</code><span class="sig-paren">(</span>Real *<em>globalX0</em>, Real <em>xend</em>, Real *<em>initCond</em>, Real <em>hOrig</em>, Real <em>hmax</em>, Real *<em>data</em>, int *<em>iterations</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv210SolverRK45P4Real4RealP4Real4Real4RealP4RealPi" title="Permalink to this definition">¶</a><br /></dt>
 <dd><p>Applies the DOPRI5 algorithm over the system defined in the computeComponent function, using the initial conditions specified in <code class="docutils literal"><span class="pre">devX0</span></code> and <code class="docutils literal"><span class="pre">devInitCond</span></code>, and returning the solution found at <code class="docutils literal"><span class="pre">xend</span></code>. <dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
@@ -224,18 +465,103 @@ described at [chan13].</p>
 </dd></dl>
 
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt id="c.Pi">
+<span class="target" id="kerrpyraytracer_8cu_1a0c233fcb94ea9f05596b48427095806e"></span><code class="descname">Pi</code><a class="headerlink" href="#c.Pi" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.SYSTEM_SIZE">
+<span class="target" id="kerrpyraytracer_8cu_1a39d1b942965923cc3e162ca808e8a7e5"></span><code class="descname">SYSTEM_SIZE</code><a class="headerlink" href="#c.SYSTEM_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
 <dl class="function">
-<dt>
-<span class="target" id="kerrpysolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span><code class="descname">static __device__ Real advanceStep(Real * y0, Real h, Real * y1, Real * data)</code></dt>
-<dd><p>This method uses DOPRI5 to advance a time of <code class="docutils literal"><span class="pre">h</span></code> the system stored in <code class="docutils literal"><span class="pre">y0</span></code>. It reads the system state passed as <code class="docutils literal"><span class="pre">y0</span></code>, advance it using the step <code class="docutils literal"><span class="pre">h</span></code> and stores the result in <code class="docutils literal"><span class="pre">y1</span></code>. The last parameter, data, is used by the rhs of the system. <dl class="docutils">
-<dt><strong>Return</strong></dt>
-<dd>The normalized estimated error of the step. </dd>
+<dt id="_CPPv219getCanonicalMomenta4Real4RealP4RealP4RealP4Real">
+<span id="getCanonicalMomenta__Real.Real.RealP.RealP.RealP"></span><span class="target" id="kerrpyraytracer_8cu_1a6274d9367d11eb80923a8d31f04cf34f"></span>__device__ void <code class="descclassname"></code><code class="descname">getCanonicalMomenta</code><span class="sig-paren">(</span>Real <em>rayTheta</em>, Real <em>rayPhi</em>, Real *<em>pR</em>, Real *<em>pTheta</em>, Real *<em>pPhi</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv219getCanonicalMomenta4Real4RealP4RealP4RealP4Real" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given the ray&#8217;s incoming direction on the camera&#8217;s local sky, rayTheta and rayPhi, this function computes its canonical momenta. See Thorne&#8217;s paper, equation (A.11), for more information. Note that the computation of this quantities depends on the constants __camBeta (speed of the camera) and __ro, __alpha, __omega, __pomega and __ro (Kerr metric constants), that are defined in the common.cu template. <dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
-<li><code class="docutils literal"><span class="pre">y0</span></code>: Initial state of the system. </li>
-<li><code class="docutils literal"><span class="pre">h</span></code>: Step that shall be advanced. </li>
-<li><code class="docutils literal"><span class="pre">y1</span></code>: Final state of the system, </li>
-<li><code class="docutils literal"><span class="pre">data</span></code>: Additional data used by the rhs of the system. </li>
+<li><code class="docutils literal"><span class="pre">rayTheta</span></code>: Polar angle, or inclination, of the ray&#8217;s incoming direction on the camera&#8217;s local sky. </li>
+<li><code class="docutils literal"><span class="pre">rayPhi</span></code>: Azimuthal angle, or azimuth, of the ray&#8217;s incoming direction on the camera&#8217;s local sky. </li>
+<li><code class="docutils literal"><span class="pre">pR</span></code>: Computed covariant coordinate r of the ray&#8217;s 4-momentum. </li>
+<li><code class="docutils literal"><span class="pre">pTheta</span></code>: Computed covariant coordinate theta of the ray&#8217;s 4-momentum. </li>
+<li><code class="docutils literal"><span class="pre">pPhi</span></code>: Computed covariant coordinate phi of the ray&#8217;s 4-momentum. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv222getConservedQuantities4Real4RealP4RealP4Real">
+<span id="getConservedQuantities__Real.Real.RealP.RealP"></span><span class="target" id="kerrpyraytracer_8cu_1a84ce07323553728b54718a74e8d823c5"></span>__device__ void <code class="descclassname"></code><code class="descname">getConservedQuantities</code><span class="sig-paren">(</span>Real <em>pTheta</em>, Real <em>pPhi</em>, Real *<em>b</em>, Real *<em>q</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv222getConservedQuantities4Real4RealP4RealP4Real" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Given the ray&#8217;s canonical momenta, this function computes its constants b (the axial angular momentum) and q (Carter constant). See Thorne&#8217;s paper, equation (A.12), for more information. Note that the computation of this quantities depends on the constant __camTheta, which is the inclination of the camera with respect to the black hole, and that is defined in the common.cu template <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">pTheta</span></code>: Covariant coordinate theta of the ray&#8217;s 4-momentum. </li>
+<li><code class="docutils literal"><span class="pre">pPhi</span></code>: Covariant coordinate phi of the ray&#8217;s 4-momentum. </li>
+<li><code class="docutils literal"><span class="pre">b</span></code>: Computed axial angular momentum. </li>
+<li><code class="docutils literal"><span class="pre">q</span></code>: Computed Carter constant. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv220setInitialConditionsPvPv4Real4Real">
+<span id="setInitialConditions__voidP.voidP.Real.Real"></span><span class="target" id="kerrpyraytracer_8cu_1ab3edc3e96058648816d88b036da04bfb"></span>__global__ void <code class="descclassname"></code><code class="descname">setInitialConditions</code><span class="sig-paren">(</span>void *<em>devInitCond</em>, void *<em>devConstants</em>, Real <em>pixelWidth</em>, Real <em>pixelHeight</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv220setInitialConditionsPvPv4Real4Real" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>CUDA kernel that computes the initial conditions (r, theta, phi, pR, pPhi) and the constants (b, q) of every ray in the simulation.</p>
+<p>This method depends on the shape of the CUDA grid: it is expected to be a 2D matrix with at least IMG_ROWS threads in the Y direction and IMG_COLS threads in the X direction. Every pixel of the camera is assigned to a single thread that computes the initial conditions and constants of its corresponding ray, following a pinhole camera model.</p>
+<p>Each thread that executes this method implements the following algorithm:<ol class="arabic simple">
+<li>Compute the pixel physical coordinates, considering the center of the sensor as the origin and computing the physical position using the width and height of each pixel.</li>
+<li>Compute the ray&#8217;s incoming direction, theta and phi, on the camera&#8217;s local sky, following the pinhole camera model defined by the sensor shape and the focal distance __d.</li>
+<li>Compute the canonical momenta pR, pTheta and pPhi with the method <code class="docutils literal"><span class="pre">getCanonicalMomenta</span></code>.</li>
+<li>Compute the ray&#8217;s constants b and q with the method. <code class="docutils literal"><span class="pre">getConservedQuantities</span></code>.</li>
+<li>Fill the pixel&#8217;s corresponding entry in the global array pointed by devInitCond with the initial conditions: __camR, __camTheta, __camPhi, pR and pTheta, where the three first components are constants that define the position of the focal point on the black hole coordinate system.</li>
+<li>Fill the pixel&#8217;s corresponding entry in the global array pointed by devConstants with the computed constants: b and q.</li>
+</ol>
+</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">devInitCond</span></code>: Device pointer to a serialized 2D matrix where each entry corresponds to a single pixel in the camera sensor. If the sensor has R rows and C columns, the vector pointed by devInitCond contains R*C entries, where each entry is a 5-tuple prepared to receive the initial conditions of a ray: (r, theta, phi, pR, pPhi). At the end of this kernel, the array pointed by devInitCond is filled with the initial conditions of every ray. </li>
+<li><code class="docutils literal"><span class="pre">devConstants</span></code>: Device pointer to a serialized 2D matrix where each entry corresponds to a single pixel in the camera sensor. If the sensor has R rows and C columns, the vector pointed by devConstants contains R*C entries, where each entry is a 2-tuple prepared to receive the constants of a ray: (b, q). At the end of this kernel, the array pointed by devConstants is filled with the computed constants of every ray. </li>
+<li><code class="docutils literal"><span class="pre">pixelWidth</span></code>: Width, in physical units, of the camera&#8217;s pixels. </li>
+<li><code class="docutils literal"><span class="pre">pixelHeight</span></code>: Height, in physical units, of the camera&#8217;s pixels. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="_CPPv26kernel4Real4RealPv4Real4RealPvPv4Real">
+<span id="kernel__Real.Real.voidP.Real.Real.voidP.voidP.Real"></span><span class="target" id="kerrpyraytracer_8cu_1a07dfc9b6c4087b8b9f7c17ccca013a3e"></span>__global__ void <code class="descclassname"></code><code class="descname">kernel</code><span class="sig-paren">(</span>Real <em>x0</em>, Real <em>xend</em>, void *<em>devInitCond</em>, Real <em>h</em>, Real <em>hmax</em>, void *<em>devData</em>, void *<em>devStatus</em>, Real <em>resolutionOrig</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv26kernel4Real4RealPv4Real4RealPvPv4Real" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>CUDA kernel that integrates a set of photons backwards in time from x0 to xend, storing the final results of their position and canonical momenta on the array pointed by devInitCond.</p>
+<p>This method depends on the shape of the CUDA grid: it is expected to be a 2D matrix with at least IMG_ROWS threads in the Y direction and IMG_COLS threads in the X direction. Every ray is assigned to a single thread, which computes its final state solving the ODE system defined by the relativistic spacetime.</p>
+<p>Each thread that executes this method implements the following algorithm:<ol class="arabic simple">
+<li>Copy the initial conditions and constants of the ray from its corresponding position at the global array devInitCond and devData into local memory.</li>
+<li>Integrate the ray&#8217;s equations defined in Thorne&#8217;s paper, (A.15). This is done while continuosly checking whether the ray has collided with disk or horizon.</li>
+<li>Overwrite the conditions at devInitCond to the new computed ones. Fill the ray&#8217;s final status (no collision, collision with the disk or collision with the horizon) in the devStatus array.</li>
+</ol>
+</p>
+<p><dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">x0</span></code>: Start of the integration interval [x_0, x_{end}]. It is usually zero. </li>
+<li><code class="docutils literal"><span class="pre">xend</span></code>: End of the integration interval [x_0, x_{end}]. </li>
+<li><code class="docutils literal"><span class="pre">devInitCond</span></code>: Device pointer to a serialized 2D Real matrix where each entry corresponds to a single pixel in the camera sensor; i.e., to a single ray. If the sensor has R rows and C columns, the vector pointed by devInitCond contains R*C entries, where each entry is a 5-tuple filled with the initial conditions of the corresponding ray: (r, theta, phi, pR, pPhi). At the end of this kernel, the array pointed by devInitCond is overwritten with the final state of each ray. </li>
+<li><code class="docutils literal"><span class="pre">h</span></code>: Step size for the Runge-Kutta solver. </li>
+<li><code class="docutils literal"><span class="pre">hmax</span></code>: Value of the maximum step size allowed in the Runge-Kutta solver. </li>
+<li><code class="docutils literal"><span class="pre">devData</span></code>: Device pointer to a serialized 2D Real matrix where each entry corresponds to a single pixel in the camera sensor; i.e., to a single ray. If the sensor has R rows and C columns, the vector pointed by devData contains R*C entries, where each entry is a 2-tuple filled with the constants of the corresponding ray: (b, q). </li>
+<li><code class="docutils literal"><span class="pre">devStatus</span></code>: Device pointer to a serialized 2D Int matrix where each entry corresponds to a single pixel in the camera sensor; i.e., to a single ray. If the sensor has R rows and C columns, the vector pointed by devData contains R*C entries, where each entry is an integer that will store the ray&#8217;s status at the end of the kernel </li>
+<li><code class="docutils literal"><span class="pre">resolutionOrig</span></code>: Amount of time in which the ray will be integrated without checking collisions. The lower this number is (in absolute value, as it should always be negative), the more resolution you&#8217;ll get in the disk edges. </li>
 </ul>
 </dd>
 </dl>
@@ -243,9 +569,92 @@ described at [chan13].</p>
 </dd></dl>
 
 </div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt id="c.__IMAGE_TRANSFORMATION__">
+<span class="target" id="kerrpyimage__transformation_8cu_1abdc68439342e877ef7f89ef13d94ad7c"></span><code class="descname">__IMAGE_TRANSFORMATION__</code><a class="headerlink" href="#c.__IMAGE_TRANSFORMATION__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.TXT_COLS">
+<span class="target" id="kerrpyimage__transformation_8cu_1a210a48aecbdffd732eb33fb74b9b2b8a"></span><code class="descname">TXT_COLS</code><a class="headerlink" href="#c.TXT_COLS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="macro">
+<dt id="c.TXT_ROWS">
+<span class="target" id="kerrpyimage__transformation_8cu_1a5186ddcdbdb23551956d98aae0c3b23f"></span><code class="descname">TXT_ROWS</code><a class="headerlink" href="#c.TXT_ROWS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv223generate_textured_imagePvPvPv">
+<span id="generate_textured_image__voidP.voidP.voidP"></span><span class="target" id="kerrpyimage__transformation_8cu_1a561751bcdea37d2584e549473b20b378"></span>__global__ void <code class="descclassname"></code><code class="descname">generate_textured_image</code><span class="sig-paren">(</span>void *<em>devRayCoordinates</em>, void *<em>devStatus</em>, void *<em>devImage</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv223generate_textured_imagePvPvPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="_CPPv214generate_imagePvPvPviiPviiPv">
+<span id="generate_image__voidP.voidP.voidP.i.i.voidP.i.i.voidP"></span><span class="target" id="kerrpyimage__transformation_8cu_1a8dce5e6ea4115fcd7ca5c9cec6e044af"></span>__global__ void <code class="descclassname"></code><code class="descname">generate_image</code><span class="sig-paren">(</span>void *<em>devRayCoordinates</em>, void *<em>devStatus</em>, void *<em>devDiskTexture</em>, int <em>diskRows</em>, int <em>diskCols</em>, void *<em>devSphereTexture</em>, int <em>sphereRows</em>, int <em>sphereCols</em>, void *<em>devImage</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv214generate_imagePvPvPviiPviiPv" title="Permalink to this definition">¶</a><br /></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Defines</p>
+<dl class="macro">
+<dt id="c.__FUNCTIONS__">
+<span class="target" id="kerrpyfunctions_8cu_1a304b60e05e8cebf0f3a1d49bdac5159e"></span><code class="descname">__FUNCTIONS__</code><a class="headerlink" href="#c.__FUNCTIONS__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric">Functions</p>
+<dl class="function">
+<dt id="_CPPv216computeComponentP4RealP4RealP4Real">
+<span id="computeComponent__RealP.RealP.RealP"></span><span class="target" id="kerrpyfunctions_8cu_1a52c4dc9bfa5c21d6a242c419dee5c2c1"></span>__device__ void <code class="descclassname"></code><code class="descname">computeComponent</code><span class="sig-paren">(</span>Real *<em>y</em>, Real *<em>f</em>, Real *<em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv216computeComponentP4RealP4RealP4Real" title="Permalink to this definition">¶</a><br /></dt>
+<dd><p>Computes the value of the function F(t) = (dr/dt, dtheta/dt, dphi/dt, dpr/dt, dptheta/dt) and stores it in the memory pointed by f. <dl class="docutils">
+<dt><strong>Parameters</strong></dt>
+<dd><ul class="breatheparameterlist first last simple">
+<li><code class="docutils literal"><span class="pre">y</span></code>: Initial conditions for the system: a pointer to a vector whose lenght shall be the same as the number of equations in the system: 5 </li>
+<li><code class="docutils literal"><span class="pre">f</span></code>: Computed value of the function: a pointer to a vector whose lenght shall be the same as the number of equations in the system: 5 </li>
+<li><code class="docutils literal"><span class="pre">data</span></code>: Additional data needed by the function, managed by the caller. Currently used to get the ray&#8217;s constants b and q. </li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd></dl>
+
+</div>
+<p>doxygenfunction:: advanceStep</p>
+</div>
 <div class="section" id="bibliography">
 <h1>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this headline">¶</a></h1>
-<p id="bibtex-bibliography-index-0"></p>
+<p id="bibtex-bibliography-index-0"><table class="docutils citation" frame="void" id="chanrepo16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[Cha16]</a></td><td>Chi&nbsp;Kwan Chan. A massive parallel ode integrator for performing general relativistic radiative transfer using ray tracing. <span><a class="reference external" href="#"></a></span>https://github.com/chanchikwan/gray, 2016.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="chan13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[CPO13]</a></td><td>Chi&nbsp;Kwan Chan, Dimitrios Psaltis, and Feryal Ozel. Gray: a massively parallel gpu-based code for ray tracing in relativistic spacetimes. <em>The Astrophysical Journal</em>, 2013. <a class="reference external" href="http://arxiv.org/abs/arXiv:1303.5057">arXiv:arXiv:1303.5057</a>, <a class="reference external" href="http://dx.doi.org/10.1088/0004-637X/777/1/13">doi:10.1088/0004-637X/777/1/13</a>.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="hairer93" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[HNW93]</td><td><em>(<a class="fn-backref" href="#id1">1</a>, <a class="fn-backref" href="#id3">2</a>, <a class="fn-backref" href="#id4">3</a>)</em> Ernst Hairer, Syvert&nbsp;P. Nørsett, and Gerhard Wanner. <em>Solving Ordinary Differential Equations I</em>. volume 8 of Springer Series in Computational Mathematics. Springer-Verlag Berlin Heidelberg, Berlin New York, 1993. ISBN 978-3-540-56670-0.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="hairer96" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[HW96]</td><td><em>(<a class="fn-backref" href="#id2">1</a>, <a class="fn-backref" href="#id5">2</a>)</em> Ernst Hairer and Gerhard Wanner. <em>Solving Ordinary Differential Equations II</em>. volume 14 of Springer Series in Computational Mathematics. Springer-Verlag Berlin Heidelberg, Berlin New York, 1996. ISBN 978-3-642-05220-0.</td></tr>
+</tbody>
+</table>
+</p>
 </div>
 
 
