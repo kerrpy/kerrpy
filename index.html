@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to TFG’s documentation! &#8212; TFG 0.1 documentation</title>
+    <title>Welcome to TFG’s documentation! &#8212; kerrpy 0.1 documentation</title>
     
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -51,7 +51,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">
-          TFG</a>
+          kerrpy</a>
         <span class="navbar-text navbar-version pull-left"><b>0.1</b></span>
       </div>
 
@@ -165,7 +165,7 @@ described at [chan13].</p>
 <p class="breathe-sectiondef-title rubric">Functions</p>
 <dl class="function">
 <dt>
-<span class="target" id="TFGsolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span><code class="descname">static __device__ Real advanceStep(Real * y0, Real h, Real * y1, Real * data)</code></dt>
+<span class="target" id="kerrpysolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span><code class="descname">static __device__ Real advanceStep(Real * y0, Real h, Real * y1, Real * data)</code></dt>
 <dd><p>This method uses DOPRI5 to advance a time of <code class="docutils literal"><span class="pre">h</span></code> the system stored in <code class="docutils literal"><span class="pre">y0</span></code>. It reads the system state passed as <code class="docutils literal"><span class="pre">y0</span></code>, advance it using the step <code class="docutils literal"><span class="pre">h</span></code> and stores the result in <code class="docutils literal"><span class="pre">y1</span></code>. The last parameter, data, is used by the rhs of the system. <dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The normalized estimated error of the step. </dd>
@@ -183,7 +183,7 @@ described at [chan13].</p>
 
 <dl class="function">
 <dt>
-<span class="target" id="TFGsolvers_8cu_1aa63690a91dd55db0487c0499251cfdb6"></span><code class="descname">__device__ int bisect(Real * yOriginal, Real * data, Real step, Real x)</code></dt>
+<span class="target" id="kerrpysolvers_8cu_1aa63690a91dd55db0487c0499251cfdb6"></span><code class="descname">__device__ int bisect(Real * yOriginal, Real * data, Real step, Real x)</code></dt>
 <dd><p>This function receives the current state of a ray that has just crossed the equatorial plane (theta = pi/2) and makes a binary search of the exact (with a tolerance of BISECT_TOL) point in which the ray crossed it. This code expects the following:<ul class="simple">
 <li>In time = x, the ray is at one side of the equatorial plane.</li>
 <li>In time = x - step, the ray was at the opposite side of the equatorial plane.</li>
@@ -206,7 +206,7 @@ described at [chan13].</p>
 
 <dl class="function">
 <dt>
-<span class="target" id="TFGsolvers_8cu_1a178e11898404e5ee33e6002e65afe2a4"></span><code class="descname">__device__ int SolverRK45(Real * globalX0, Real xend, Real * initCond, Real hOrig, Real hmax, Real * data, int * iterations)</code></dt>
+<span class="target" id="kerrpysolvers_8cu_1a178e11898404e5ee33e6002e65afe2a4"></span><code class="descname">__device__ int SolverRK45(Real * globalX0, Real xend, Real * initCond, Real hOrig, Real hmax, Real * data, int * iterations)</code></dt>
 <dd><p>Applies the DOPRI5 algorithm over the system defined in the computeComponent function, using the initial conditions specified in <code class="docutils literal"><span class="pre">devX0</span></code> and <code class="docutils literal"><span class="pre">devInitCond</span></code>, and returning the solution found at <code class="docutils literal"><span class="pre">xend</span></code>. <dl class="docutils">
 <dt><strong>Parameters</strong></dt>
 <dd><ul class="breatheparameterlist first last simple">
@@ -226,7 +226,7 @@ described at [chan13].</p>
 </div>
 <dl class="function">
 <dt>
-<span class="target" id="TFGsolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span><code class="descname">static __device__ Real advanceStep(Real * y0, Real h, Real * y1, Real * data)</code></dt>
+<span class="target" id="kerrpysolvers_8cu_1abc72fb5a61a1d7881b186cba55beb294"></span><code class="descname">static __device__ Real advanceStep(Real * y0, Real h, Real * y1, Real * data)</code></dt>
 <dd><p>This method uses DOPRI5 to advance a time of <code class="docutils literal"><span class="pre">h</span></code> the system stored in <code class="docutils literal"><span class="pre">y0</span></code>. It reads the system state passed as <code class="docutils literal"><span class="pre">y0</span></code>, advance it using the step <code class="docutils literal"><span class="pre">h</span></code> and stores the result in <code class="docutils literal"><span class="pre">y1</span></code>. The last parameter, data, is used by the rhs of the system. <dl class="docutils">
 <dt><strong>Return</strong></dt>
 <dd>The normalized estimated error of the step. </dd>
@@ -260,7 +260,7 @@ described at [chan13].</p>
       
     </p>
     <p>
-        &copy; Copyright 2016, Alejandro García Montoro.<br/>
+        &copy; Copyright 2017, Pablo Galindo and Alejandro García.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.<br/>
     </p>
   </div>
