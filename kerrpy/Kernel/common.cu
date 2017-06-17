@@ -68,26 +68,26 @@
 #define E7 (- 1./40.)
 
 // Black hole's spin and its square
-#define __a  0.5
-#define __a2 0.25
+#define __a  0.2647333333333333
+#define __a2 0.07008373777777777
 
 // Camera constants
 #define __d 20
-#define __camR 14.5
-#define __camTheta 0.4712458980384689
+#define __camR 40.0
+#define __camTheta 1.413717694115407
 #define __camPhi 0
 #define __camBeta 0
 
 // Black hole constants
-#define __b1 -6.13815572472
-#define __b2 4.09626665871
+#define __b1 -5.70774830922
+#define __b2 4.643138941
 
 // Kerr constants
-#define __ro 14.5068422388
-#define __delta 210.5
-#define __pomega 6.58686528546
+#define __ro 40.0000214381
+#define __delta 1600.0700837377778
+#define __pomega 39.508405133
 #define __alpha 1.0
-#define __omega 0.000327318178562
+#define __omega 8.27254544207e-06
 
 // Camera rotation angles
 #define __pitch 0.0
@@ -118,7 +118,7 @@
 #define SPHERE 0
 
 // Black hole parameters: horizon radius and disk definition
-#define horizonRadius 1.86602540378
+#define horizonRadius 1.96432165911
 #define innerDiskRadius 0
 #define outerDiskRadius 20
 
